@@ -14,13 +14,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="bg-base">
-        <main>
+        <div className="flex flex-col">
           <Navbar />
-          {children}
-        </main>
-        <footer className="absolute bottom-0 left-1/2 -translate-x-1/2 p-2">
-          <span className="text-sm">nadesh52</span>
-        </footer>
+          <main className="min-h-[calc(100svh-75px)] p-8">{children}</main>
+          <footer className="h- bg-purple-600 p-1 text-center">
+            <p className="text-sm">nadesh52</p>
+          </footer>
+        </div>
       </body>
     </html>
   );

@@ -14,7 +14,7 @@ const InterestCalcPage = () => {
   const [toggleTab, setToggleTab] = useState(1);
 
   return (
-    <article className="max-w-screen-xs min-h-dvh mx-auto">
+    <article className="max-w-screen-xs mx-auto">
       <ResultBox {...result} />
 
       <section

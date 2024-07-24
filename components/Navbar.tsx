@@ -4,12 +4,14 @@ import HamburgerMenu from "./HamburgerMenu";
 
 const Navbar = () => {
   return (
-    <nav className="w-full p-4 bg-secondary flex justify-between">
-      <div>left menu</div>
-      <NavMenu />
+    <header>
+      <nav className="flex w-full justify-between bg-secondary p-4">
+        <div>left menu</div>
+        <NavMenu />
 
-      <HamburgerMenu />
-    </nav>
+        <HamburgerMenu />
+      </nav>
+    </header>
   );
 };
 
