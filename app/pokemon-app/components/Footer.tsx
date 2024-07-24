@@ -1,9 +1,9 @@
-import {
-  faGithub,
-  faLinkedin,
-  faTwitter,
-} from "@fortawesome/free-brands-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import {
+//   faGithub,
+//   faLinkedin,
+//   faTwitter,
+// } from "@fortawesome/free-brands-svg-icons";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 
 const Footer = () => {
@@ -16,13 +16,13 @@ const Footer = () => {
 
         <ul className="flex items-center gap-4">
           <li>
-            <FontAwesomeIcon icon={faTwitter} size="2xl" />
+            {/* <FontAwesomeIcon icon={faTwitter} size="2xl" /> */}
           </li>
           <li>
-            <FontAwesomeIcon icon={faLinkedin} size="2xl" />
+            {/* <FontAwesomeIcon icon={faLinkedin} size="2xl" /> */}
           </li>
           <li>
-            <FontAwesomeIcon icon={faGithub} size="2xl" />
+            {/* <FontAwesomeIcon icon={faGithub} size="2xl" /> */}
           </li>
         </ul>
       </div>
