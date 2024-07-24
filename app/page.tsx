@@ -41,16 +41,38 @@ const appItems = [
       </>
     ),
   },
+  // {
+  //   name: "Credit Check",
+  //   url: "/credit-app",
+  //   icon: (
+  //     <>
+  //       <path
+  //         strokeLinecap="round"
+  //         strokeLinejoin="round"
+  //         d="M9 12.75 11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 0 1-1.043 3.296 3.745 3.745 0 0 1-3.296 1.043A3.745 3.745 0 0 1 12 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 0 1-3.296-1.043 3.745 3.745 0 0 1-1.043-3.296A3.745 3.745 0 0 1 3 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 0 1 1.043-3.296 3.746 3.746 0 0 1 3.296-1.043A3.746 3.746 0 0 1 12 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 0 1 3.296 1.043 3.746 3.746 0 0 1 1.043 3.296A3.745 3.745 0 0 1 21 12Z"
+  //       />
+  //     </>
+  //   ),
+  // },
   {
-    name: "Credit Check",
-    url: "/credit-app",
+    name: "Share Bill",
+    url: "/share-bill",
     icon: (
       <>
         <path
           strokeLinecap="round"
           strokeLinejoin="round"
-          d="M9 12.75 11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 0 1-1.043 3.296 3.745 3.745 0 0 1-3.296 1.043A3.745 3.745 0 0 1 12 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 0 1-3.296-1.043 3.745 3.745 0 0 1-1.043-3.296A3.745 3.745 0 0 1 3 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 0 1 1.043-3.296 3.746 3.746 0 0 1 3.296-1.043A3.746 3.746 0 0 1 12 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 0 1 3.296 1.043 3.746 3.746 0 0 1 1.043 3.296A3.745 3.745 0 0 1 21 12Z"
+          d="M2.25 18.75a60.07 60.07 0 0 1 15.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 0 1 3 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 0 0-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 0 1-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 0 0 3 15h-.75M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm3 0h.008v.008H18V10.5Zm-12 0h.008v.008H6V10.5Z"
         />
+      </>
+    ),
+  },
+  {
+    name: "Invoice Generator",
+    url: "/invoice-generator",
+    icon: (
+      <>
+<path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456ZM16.894 20.567 16.5 21.75l-.394-1.183a2.25 2.25 0 0 0-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 0 0 1.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 0 0 1.423 1.423l1.183.394-1.183.394a2.25 2.25 0 0 0-1.423 1.423Z" />
       </>
     ),
   },
@@ -61,9 +83,9 @@ const Home = () => {
     <article className="max-w-screen-sm mt-10 p-6 mx-auto" id="container">
       <section>
         <span className="text-2xl font-medium">App</span>
-        <div className="mt-3 h-full grid gap-y-4 grid-cols-[repeat(1,auto)] xs:grid-cols-[repeat(2,auto)] sm:grid-cols-[repeat(3,auto)] xs:justify-between justify-center">
+        <ul className="mt-3 h-full grid gap-y-4 grid-cols-[repeat(1,auto)] xs:grid-cols-[repeat(2,auto)] sm:grid-cols-[repeat(3,auto)] xs:justify-between justify-center">
           {appItems.map((item, index) => (
-            <div
+            <li
               key={index}
               className="relative bg-secondary xs:w-52 w-80 h-32 rounded-lg overflow-hidden shadow-sm hover:scale-105 hover:shadow-lg duration-100"
             >
@@ -84,9 +106,9 @@ const Home = () => {
                   <span className="font-medium text-primary">{item.name}</span>
                 </div>
               </Link>
-            </div>
+            </li>
           ))}
-        </div>
+        </ul>
       </section>
     </article>
   );
