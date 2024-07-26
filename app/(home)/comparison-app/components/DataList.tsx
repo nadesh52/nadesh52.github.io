@@ -23,7 +23,7 @@ const DataList = ({ items, removeId }: any) => {
   }, [items, max, min]);
 
   return (
-    <div className="min-h-[500px] mt-2">
+    <div className="min-h-[505px] mt-2">
       <p className="font-medium text-lg px-2 mb-2">Item list</p>
       <ul>
         {items.map((item: any, idx: number) => (

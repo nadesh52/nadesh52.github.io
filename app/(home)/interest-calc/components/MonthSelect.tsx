@@ -2,7 +2,7 @@
 import { ChevronUpDownIcon } from "@heroicons/react/24/outline";
 import React, { useEffect, useRef, useState } from "react";
 
-const months = [3, 6, 12, 24, 36];
+const months = [3, 6, 9, 12, 24, 36];
 
 const MonthSelect = ({ selectedValue, label }: any) => {
   const [isHidden, setIsHidden] = useState(true);

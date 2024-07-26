@@ -14,38 +14,37 @@ const InterestCalcPage = () => {
   const [toggleTab, setToggleTab] = useState(1);
 
   return (
-    <article className="max-w-screen-xs mx-auto">
+    <article className="mx-auto max-w-screen-xs">
       <ResultBox {...result} />
 
       <section
         id="tab"
-        className="bg-white border border-base rounded-md mt-5 max-w-[425px] mx-auto"
+        className="mx-auto mt-4 max-w-screen-xs rounded-md border border-base bg-white"
       >
-        <div className="grid grid-cols-2">
+        <div className="grid grid-cols-2 my-2">
           <button
-            className={` 
-            ${
+            className={` ${
               toggleTab === 1
-                ? "border-b-2 border-opacity-100 border-secondary text-lg font-medium text-secondary"
-                : "font-normal text-md text-black text-opacity-60"
-            }  my-1 mx-3 py-4`}
+                ? "border-b-2 border-secondary border-opacity-100 text-lg font-medium text-secondary"
+                : "text-md font-normal text-black text-opacity-60"
+            } mx-4 py-4 transition-all hover:bg-slate-100`}
             onClick={() => setToggleTab(1)}
           >
             <span>Saving Rate</span>
           </button>
 
           <button
-            className={` 
-            ${
+            className={` ${
               toggleTab === 2
-                ? "border-b-2 border-opacity-100 border-secondary text-lg font-medium text-secondary"
-                : "font-normal text-md text-black text-opacity-60"
-            }  my-1 mx-3 py-4`}
+                ? "border-b-2 border-secondary border-opacity-100 text-lg font-medium text-secondary"
+                : "text-md font-normal text-black text-opacity-60"
+            } mx-4 py-4 transition-all hover:bg-slate-100`}
             onClick={() => setToggleTab(2)}
           >
             <span>Fixed Rate</span>
           </button>
         </div>
+
         <div id="tab1" className={`${toggleTab === 1 ? "block" : "hidden"}`}>
           <SavingPlan total={(e: any) => setResult(e)} />
         </div>

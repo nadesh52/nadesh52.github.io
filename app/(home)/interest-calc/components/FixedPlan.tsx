@@ -62,7 +62,7 @@ const FixedPlan = ({ total }: any) => {
           />
         </div>
 
-        <div>
+        <div className="col-span-2">
           <Input
             label="Interest Rate (%)"
             type="number"
@@ -73,7 +73,7 @@ const FixedPlan = ({ total }: any) => {
           />
         </div>
 
-        <div>
+        <div className="col-span-2">
           <DatePicker
             label="Start Date"
             selectedValue={(e: any) => setSelectedDate(e.target.value)}

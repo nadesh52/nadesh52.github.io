@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { useOrder } from "@/context/OrderContext";
-import PeopleDropdown from "../components/PeopleDropdown";
+import PeopleDropdown from "./PeopleDropdown";
 import { Modal } from "./Modal";
 import { usePeople } from "@/context/PeopleContext";
 

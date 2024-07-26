@@ -146,16 +146,16 @@ const EvoChain = ({ speciesData, onEvoClick }: any) => {
   }, [speciesData]);
 
   return (
-    <div className="bg-skin-fill-light p-4">
-      <span className="text-2xl text-skin-base font-medium font-josefin">
+    <>
+      <p className="text-2xl text-skin-base font-medium font-josefin">
         Evolution Chain
-      </span>
+      </p>
 
       {isPending ? (
         <LoadingBlock />
       ) : (
         <>
-          <div className="flex justify-evenly items-center mt-2">
+          <div className="flex justify-evenly items-center">
             {evoChain.map((evo: any, i: number) => (
               <EvoCard
                 key={i}
@@ -168,7 +168,7 @@ const EvoChain = ({ speciesData, onEvoClick }: any) => {
           </div>
         </>
       )}
-    </div>
+    </>
   );
 };
 

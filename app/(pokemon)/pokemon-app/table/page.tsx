@@ -9,6 +9,7 @@ import Card from "../components/Card";
 import Image from "next/image";
 import useFetcher from "@/hooks/fetcher";
 import LoadingBlock from "../components/LoadingBlock";
+import Link from "next/link";
 
 const PokemonsTable = () => {
   const [selectedTypes, setSelectedTypes] = useState<string>("all");
@@ -28,20 +29,20 @@ const PokemonsTable = () => {
   useEffect(() => {}, []);
 
   return (
-    <section className="bg-skin-white min-h-[calc(100dvh-114px)]">
-      <nav className="flex justify-between items-center bg-skin-fill p-4">
+    <section className="bg-skin-white">
+      <nav className="flex justify-between items-center px-4">
         <div className="hover:rotate-45 transition">
-          <a href="/pokemon">
+          <a href="/pokemon-app">
             <Image src={logo} alt="" height={40} width={40} />
           </a>
         </div>
-        <ul className="flex items-center gap-3">
+        <ul className="flex items-center">
           <li>
-            <a href="/">
-              <span className="font-josefin font-medium text-lg p-2 w-fit rounded-md hover:text-skin-base hover:bg-skin-fill-dark transition">
+            <Link href="/">
+              <p className="font-josefin font-medium text-lg py-1 px-2 w-fit bg-skin-fill rounded-md hover:text-skin-base hover:bg-skin-fill-dark transition">
                 Home
-              </span>
-            </a>
+              </p>
+            </Link>
           </li>
         </ul>
       </nav>
@@ -57,7 +58,8 @@ const PokemonsTable = () => {
               {gens.region.toUpperCase()}
             </p>
           </div>
-          <div className="max-w-screen-xl grid grid-cols-2 xs:grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-8 mx-auto gap-3 px-4 pt-2 pb-5 transition-all">
+
+          <div className="max-w-screen-xl grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 mx-auto gap-3 px-4 pt-2 pb-5 transition-all">
             {selectedTypes === "all" ? (
               <>
                 {pokemonsData.map((pokemon: Pokemon) => (
