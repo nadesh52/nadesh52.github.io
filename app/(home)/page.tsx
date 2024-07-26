@@ -30,7 +30,7 @@ const appItems = [
   },
   {
     name: "Pokedex",
-    url: "/pokemon-app",
+    url: "/pokedex",
     icon: (
       <>
         <path

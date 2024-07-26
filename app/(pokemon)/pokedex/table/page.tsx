@@ -32,7 +32,7 @@ const PokemonsTable = () => {
     <section className="bg-skin-white">
       <nav className="flex justify-between items-center px-4">
         <div className="hover:rotate-45 transition">
-          <a href="/pokemon-app">
+          <a href="/pokedex">
             <Image src={logo} alt="" height={40} width={40} />
           </a>
         </div>
@@ -59,7 +59,7 @@ const PokemonsTable = () => {
             </p>
           </div>
 
-          <div className="max-w-screen-xl grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 mx-auto gap-3 px-4 pt-2 pb-5 transition-all">
+          <div className="max-w-screen-xl grid grid-cols-2 sm:grid-cols-4 mx-auto gap-3 px-4 pt-2 pb-5 transition-all">
             {selectedTypes === "all" ? (
               <>
                 {pokemonsData.map((pokemon: Pokemon) => (

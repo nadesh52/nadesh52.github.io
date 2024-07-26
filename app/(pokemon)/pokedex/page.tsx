@@ -91,13 +91,13 @@ const LandingPage = () => {
       <section className="space-y-4 pt-4">
         <nav className="flex items-center justify-between bg-white px-4">
           <div>
-            <Link href="/pokemon-app">
+            <Link href="/pokedex">
               <Image src={logo} alt="" height={40} width={40} />
             </Link>
           </div>
 
           <div className="flex gap-4">
-            <Link href="/pokemon-app/table">
+            <Link href="/pokedex/table">
               <p className="w-fit rounded-md bg-skin-fill-light px-2 py-1 font-josefin text-lg font-medium transition hover:bg-skin-fill-dark hover:text-skin-base">
                 Pokemon Table
               </p>
