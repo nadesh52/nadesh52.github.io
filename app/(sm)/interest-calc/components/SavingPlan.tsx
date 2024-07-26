@@ -58,7 +58,7 @@ const SavingPlan = ({ total }: any) => {
           />
         </div>
 
-        <div className="col-span-1">
+        <div className="col-span-2">
           <DatePicker
             label="Start Date"
             selectedValue={(e: any) =>
@@ -67,7 +67,7 @@ const SavingPlan = ({ total }: any) => {
           />
         </div>
 
-        <div className="col-span-1">
+        <div className="col-span-2">
           <DatePicker
             label="End Date"
             selectedValue={(e: any) =>

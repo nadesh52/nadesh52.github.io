@@ -65,45 +65,70 @@ const NavPokemon = ({ pokemon, onNewNav }: any) => {
   }, [pokemon]);
 
   return (
-    <section className="bg-skin-fill-light py-4 flex items-center justify-evenly">
+    <>
       {isPending ? (
         <LoadingBlock />
       ) : (
         <>
           {pokemon.id >= firstIdx && (
-            <div
-              className="flex items-center gap-4 text-skin-base"
+            <button
+              className="flex items-center text-skin-base"
               onClick={() => onNewNav(prev.id)}
             >
-              {/* <FontAwesomeIcon icon={faArrowLeftLong} size="xl" /> */}
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+                className="size-8"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M15.75 19.5 8.25 12l7.5-7.5"
+                />
+              </svg>
 
               <Image
                 src={prev.sprite ? prev.sprite : logo}
                 alt=""
-                height={80}
-                width={80}
+                height={96}
+                width={96}
               />
-            </div>
+            </button>
           )}
 
           {pokemon.id <= lastIdx && (
-            <div
-              className="flex items-center gap-4 text-skin-base"
+            <button
+              className="flex items-center text-skin-base"
               onClick={() => onNewNav(next.id)}
             >
               <Image
                 src={next.sprite ? next.sprite : logo}
                 alt=""
-                height={80}
-                width={80}
+                height={96}
+                width={96}
               />
-
-              {/* <FontAwesomeIcon icon={faArrowRightLong} size="xl" /> */}
-            </div>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+                className="size-8"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="m8.25 4.5 7.5 7.5-7.5 7.5"
+                />
+              </svg>
+            </button>
           )}
         </>
       )}
-    </section>
+    </>
   );
 };
 

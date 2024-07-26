@@ -9,11 +9,11 @@ const Card = ({ content }: any) => {
         alt="sprite"
         width={100}
         height={100}
-        className="group-hover:scale-125 delay-100 duration-300"
+        className="group-hover:scale-125 delay-75 duration-100"
       />
-      <span className="font-josefin font-medium z-40 bg-skin-white bg-opacity-40 text-skin-type select-none transition">
+      <p className="font-josefin font-medium z-40 bg-skin-white bg-opacity-40 text-skin-type select-none transition">
         {capitalize(content.name)}
-      </span>
+      </p>
     </div>
   );
 };

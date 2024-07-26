@@ -52,7 +52,7 @@ const ComparisonPage = () => {
           </div>
         </section>
 
-        <section className="mt-9 h-auto min-h-[500px]">
+        <section className="mt-9 h-auto min-h-[505px]">
           <div id="container" className="overflow-y-scroll">
             {items.length !== 0 ? (
               <DataList items={items} removeId={handleRemove} />

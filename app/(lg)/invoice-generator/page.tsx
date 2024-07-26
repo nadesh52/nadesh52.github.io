@@ -8,6 +8,7 @@ import Accordion from "./components/Accordion";
 import InfoForm from "./components/InfoForm";
 import TermForm from "./components/TermForm";
 import DownloadButton from "./components/DownloadButton";
+import Navbar from "@/components/Navbar";
 
 const initInput = {
   id: 0,
@@ -63,7 +64,7 @@ const Home = () => {
   const [data, setData] = useState<any>(initialData);
   const [inputsList, setInputsList] = useState<any[]>([initInput]);
   const [sumInputs, setSumInputs] = useState<any>({});
-  const [sumoption, setSumOption] = useState<any>({
+  const [sumOption, setSumOption] = useState<any>({
     hasTax: false,
     hasDiscount: false,
     isTaxPct: true,
@@ -77,32 +78,32 @@ const Home = () => {
     0,
   );
 
-  const discount = sumoption?.isDiscountPct
+  const discount = sumOption?.isDiscountPct
     ? subtotal * pctFormat(sumInputs.discount)
     : Number(sumInputs.discount);
 
   const totalDiscount = subtotal - discount;
 
-  const tax = sumoption?.isTaxPct
+  const tax = sumOption?.isTaxPct
     ? totalDiscount * pctFormat(sumInputs.tax)
     : Number(sumInputs.tax);
 
   const total =
-    sumoption.hasDiscount && !sumoption.hasTax
+    sumOption.hasDiscount && !sumOption.hasTax
       ? totalDiscount
-      : sumoption.hasTax && !sumoption.hasDiscount
+      : sumOption.hasTax && !sumOption.hasDiscount
         ? subtotal + tax
-        : sumoption.hasDiscount && sumoption.hasTax
+        : sumOption.hasDiscount && sumOption.hasTax
           ? totalDiscount + tax
           : subtotal;
 
   const finalTotal = !isNaN(total)
     ? total
-    : isNaN(total) && sumoption.hasTax && !sumoption.hasDiscount
+    : isNaN(total) && sumOption.hasTax && !sumOption.hasDiscount
       ? "enter tax first"
-      : isNaN(total) && sumoption.hasDiscount && !sumoption.hasTax
+      : isNaN(total) && sumOption.hasDiscount && !sumOption.hasTax
         ? "enter discount first"
-        : isNaN(total) && sumoption.hasDiscount && sumoption.hasTax
+        : isNaN(total) && sumOption.hasDiscount && sumOption.hasTax
           ? "enter dis and tax"
           : null;
 
@@ -172,6 +173,7 @@ const Home = () => {
 
   return (
     <article className="mx-auto max-w-screen-xl">
+          <Navbar />
       <Modal open={openModal} onClose={() => setOpenModal(false)}>
         {modalComponents[innerModal] || null}
       </Modal>
@@ -265,7 +267,9 @@ const Home = () => {
                       <p>Date</p>
                     </div>
                     <div className="table-cell text-left">
-                      <p>{new Date(data?.info?.date).toLocaleDateString('th-TH')}</p>
+                      <p>
+                        {new Date(data?.info?.date).toLocaleDateString("th-TH")}
+                      </p>
                     </div>
                   </div>
                   <div className="table-row">
@@ -273,7 +277,11 @@ const Home = () => {
                       <p>Due Date</p>
                     </div>
                     <div className="table-cell text-left">
-                      <p>{new Date(data?.info?.dueDate).toLocaleDateString('th-TH')}</p>
+                      <p>
+                        {new Date(data?.info?.dueDate).toLocaleDateString(
+                          "th-TH",
+                        )}
+                      </p>
                     </div>
                   </div>
                   <div className="table-row">
@@ -348,13 +356,13 @@ const Home = () => {
                 </p>
               </div>
 
-              {sumoption.hasDiscount && (
+              {sumOption.hasDiscount && (
                 <div className="group/discount relative table-row">
                   <div className="flex">
                     <div className="flex-1">
                       <p>Discount</p>
                     </div>
-                    {sumoption?.isDiscountPct ? (
+                    {sumOption?.isDiscountPct ? (
                       <div className="flex-1 text-right">
                         <span>{sumInputs.discount}</span>
                         <span>%</span>
@@ -392,13 +400,13 @@ const Home = () => {
                 </div>
               )}
 
-              {sumoption.hasTax && (
+              {sumOption.hasTax && (
                 <div className="group/discount relative table-row">
                   <div className="flex">
                     <div className="flex-1">
                       <p>Tax</p>
                     </div>
-                    {sumoption.isTaxPct ? (
+                    {sumOption.isTaxPct ? (
                       <div className="flex-1 text-right">
                         <span>{sumInputs.tax}</span>
                         <span>%</span>
@@ -602,11 +610,11 @@ const Home = () => {
                   onClick={() =>
                     setSumOption((prev: any) => ({
                       ...prev,
-                      hasDiscount: !sumoption.hasDiscount,
+                      hasDiscount: !sumOption.hasDiscount,
                     }))
                   }
                   className={`flex w-fit flex-1 items-center justify-between rounded border px-4 py-2 transition-all ${
-                    sumoption.hasDiscount
+                    sumOption.hasDiscount
                       ? "border-accent bg-accent/10 text-black"
                       : "border-black/20 bg-white text-black/50"
                   }`}
@@ -616,8 +624,10 @@ const Home = () => {
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"
                     fill="currentColor"
-                    className={`size-6 transition-all ${
-                      sumoption.hasDiscount ? "text-accent" : "text-black/20"
+                    className={`size-6 ${
+                      sumOption.hasDiscount
+                        ? "visible text-accent"
+                        : "invisible"
                     }`}
                   >
                     <path
@@ -632,11 +642,11 @@ const Home = () => {
                   onClick={() =>
                     setSumOption((prev: any) => ({
                       ...prev,
-                      hasTax: !sumoption.hasTax,
+                      hasTax: !sumOption.hasTax,
                     }))
                   }
                   className={`flex w-fit flex-1 items-center justify-between rounded border px-4 py-2 transition-all ${
-                    sumoption.hasTax
+                    sumOption.hasTax
                       ? "border-yellow bg-yellow/20 text-black"
                       : "border-black/20 bg-white text-black/50"
                   }`}
@@ -646,8 +656,8 @@ const Home = () => {
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"
                     fill="currentColor"
-                    className={`size-6 transition-all ${
-                      sumoption.hasTax ? "text-yellow" : "text-black/20"
+                    className={`size-6 ${
+                      sumOption.hasTax ? "visible text-yellow" : "invisible"
                     }`}
                   >
                     <path
@@ -659,10 +669,10 @@ const Home = () => {
                 </button>
               </div>
 
-              {sumoption.hasDiscount && (
+              {sumOption.hasDiscount && (
                 <div className="relative mb-4 flex w-full overflow-hidden rounded-lg border border-accent">
                   <span className="pointer-events-none absolute right-14 top-2 select-none font-medium">
-                    {sumoption?.isDiscountPct ? "%" : "฿"}
+                    {sumOption?.isDiscountPct ? "%" : "฿"}
                   </span>
                   <input
                     name="discount"
@@ -676,7 +686,7 @@ const Home = () => {
                     onClick={() =>
                       setSumOption((prev: any) => ({
                         ...prev,
-                        isDiscountPct: !sumoption.isDiscountPct,
+                        isDiscountPct: !sumOption.isDiscountPct,
                       }))
                     }
                     className="bg-white px-2 text-black/70 ring-2 ring-accent transition-all hover:bg-accent hover:text-white"
@@ -699,10 +709,10 @@ const Home = () => {
                 </div>
               )}
 
-              {sumoption.hasTax && (
+              {sumOption.hasTax && (
                 <div className="relative flex w-full overflow-hidden rounded-lg border border-yellow">
                   <span className="pointer-events-none absolute right-14 top-2 select-none font-medium">
-                    {sumoption?.isTaxPct ? "%" : "฿"}
+                    {sumOption?.isTaxPct ? "%" : "฿"}
                   </span>
                   <input
                     name="tax"
@@ -716,7 +726,7 @@ const Home = () => {
                     onClick={() =>
                       setSumOption((prev: any) => ({
                         ...prev,
-                        isTaxPct: !sumoption.isTaxPct,
+                        isTaxPct: !sumOption.isTaxPct,
                       }))
                     }
                     className="bg-white px-2 text-black/70 ring-2 ring-yellow transition-all hover:bg-yellow hover:text-white"

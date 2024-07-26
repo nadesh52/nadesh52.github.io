@@ -72,7 +72,11 @@ const appItems = [
     url: "/invoice-generator",
     icon: (
       <>
-<path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456ZM16.894 20.567 16.5 21.75l-.394-1.183a2.25 2.25 0 0 0-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 0 0 1.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 0 0 1.423 1.423l1.183.394-1.183.394a2.25 2.25 0 0 0-1.423 1.423Z" />
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456ZM16.894 20.567 16.5 21.75l-.394-1.183a2.25 2.25 0 0 0-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 0 0 1.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 0 0 1.423 1.423l1.183.394-1.183.394a2.25 2.25 0 0 0-1.423 1.423Z"
+        />
       </>
     ),
   },
@@ -80,36 +84,29 @@ const appItems = [
 
 const Home = () => {
   return (
-    <article className="max-w-screen-sm mt-10 p-6 mx-auto" id="container">
-      <section>
-        <span className="text-2xl font-medium">App</span>
-        <ul className="mt-3 h-full grid gap-y-4 grid-cols-[repeat(1,auto)] xs:grid-cols-[repeat(2,auto)] sm:grid-cols-[repeat(3,auto)] xs:justify-between justify-center">
-          {appItems.map((item, index) => (
-            <li
-              key={index}
-              className="relative bg-secondary xs:w-52 w-80 h-32 rounded-lg overflow-hidden shadow-sm hover:scale-105 hover:shadow-lg duration-100"
-            >
-              <Link href={item.url}>
-                <div className="flex justify-center items-center h-full pb-6">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth={1.2}
-                    stroke="currentColor"
-                    className="w-14 h-14 text-white"
-                  >
-                    {item.icon}
-                  </svg>
-                </div>
-                <div className="absolute table bottom-0 w-full text-center bg-white p-1">
-                  <span className="font-medium text-primary">{item.name}</span>
-                </div>
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </section>
+    <article className="mx-auto mt-4 max-w-screen-sm px-4">
+      <p className="text-2xl font-medium">App</p>
+      <ul className="mt-4 grid gap-4 grid-cols-[repeat(3,auto)] justify-between">
+        {appItems.map((item, index) => (
+          <li key={index}>
+            <Link href={item.url}>
+              <div className="flex h-24 w-40 flex-col items-center justify-center rounded bg-secondary shadow-sm duration-100 hover:scale-105 hover:shadow-lg">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={1.2}
+                  stroke="currentColor"
+                  className="h-14 w-14 text-white"
+                >
+                  {item.icon}
+                </svg>
+                <p className="font-medium text-white">{item.name}</p>
+              </div>
+            </Link>
+          </li>
+        ))}
+      </ul>
     </article>
   );
 };
