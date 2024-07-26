@@ -1,3 +1,4 @@
+import Navbar from "@/components/Navbar";
 import "@/styles/globals.css";
 
 export const metadata = {
@@ -13,8 +14,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <div className="bg-slate-100 flex flex-col">
-          <main className="min-h-[calc(100svh-75px)]">{children}</main>
+        <Navbar />
+        <div className="flex flex-col bg-slate-100">
+          <main className="min-h-[calc(100svh-75px)] w-full">{children}</main>
           <footer className="p-1 text-center">
             <p className="text-sm">nadesh52</p>
           </footer>

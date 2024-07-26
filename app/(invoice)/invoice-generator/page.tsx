@@ -8,7 +8,6 @@ import Accordion from "./components/Accordion";
 import InfoForm from "./components/InfoForm";
 import TermForm from "./components/TermForm";
 import DownloadButton from "./components/DownloadButton";
-import Navbar from "@/components/Navbar";
 
 const initInput = {
   id: 0,
@@ -172,13 +171,12 @@ const Home = () => {
   };
 
   return (
-    <article className="mx-auto max-w-screen-xl">
-          <Navbar />
+    <article>
       <Modal open={openModal} onClose={() => setOpenModal(false)}>
         {modalComponents[innerModal] || null}
       </Modal>
 
-      <div className="mx-auto mt-10 flex flex-1 flex-col gap-2 lg:flex-row">
+      <div className="mx-auto mt-10 flex max-w-screen-xl flex-1 flex-col gap-2 lg:flex-row">
         <section
           ref={a4Ref}
           className="order-2 mx-auto h-[842px] min-w-[595px] max-w-[595px] space-y-4 divide-black/40 bg-white p-6 lg:order-1"
@@ -332,7 +330,7 @@ const Home = () => {
                               strokeWidth={1.5}
                               stroke="currentColor"
                               onClick={() => handleRemoveInput(item.id)}
-                              className="absolute -right-5 hidden size-5 cursor-pointer text-red group-hover/item:block peer-focus-visible:block"
+                              className="text-red absolute -right-5 hidden size-5 cursor-pointer group-hover/item:block peer-focus-visible:block"
                             >
                               <path
                                 strokeLinecap="round"
@@ -349,7 +347,7 @@ const Home = () => {
             </div>
 
             <div className="ml-auto table w-1/2 px-2">
-              <div className="table-row bg-grey">
+              <div className="bg-grey table-row">
                 <p className="table-cell">Subtotal</p>
                 <p className="table-cell text-right font-medium">
                   {!isNaN(subtotal) ? subtotal.toFixed(2) : null}
@@ -388,7 +386,7 @@ const Home = () => {
                       viewBox="0 0 24 24"
                       strokeWidth={1.5}
                       stroke="currentColor"
-                      className="size-6 text-red"
+                      className="text-red size-6"
                     >
                       <path
                         strokeLinecap="round"
@@ -432,7 +430,7 @@ const Home = () => {
                       viewBox="0 0 24 24"
                       strokeWidth={1.5}
                       stroke="currentColor"
-                      className="size-6 text-red"
+                      className="text-red size-6"
                     >
                       <path
                         strokeLinecap="round"
@@ -555,7 +553,7 @@ const Home = () => {
                               strokeWidth={1.5}
                               stroke="currentColor"
                               onClick={() => handleRemoveInput(list.id)}
-                              className="my-auto size-5 w-2/12 cursor-pointer text-red"
+                              className="text-red my-auto size-5 w-2/12 cursor-pointer"
                             >
                               <path
                                 strokeLinecap="round"
@@ -577,7 +575,7 @@ const Home = () => {
                                 },
                               ])
                             }
-                            className="mt-2 flex select-none items-center gap-1 rounded bg-green p-1 text-white transition-all hover:shadow-md"
+                            className="bg-green mt-2 flex select-none items-center gap-1 rounded p-1 text-white transition-all hover:shadow-md"
                           >
                             <svg
                               xmlns="http://www.w3.org/2000/svg"
@@ -657,7 +655,7 @@ const Home = () => {
                     viewBox="0 0 24 24"
                     fill="currentColor"
                     className={`size-6 ${
-                      sumOption.hasTax ? "visible text-yellow" : "invisible"
+                      sumOption.hasTax ? "text-yellow visible" : "invisible"
                     }`}
                   >
                     <path
@@ -710,7 +708,7 @@ const Home = () => {
               )}
 
               {sumOption.hasTax && (
-                <div className="relative flex w-full overflow-hidden rounded-lg border border-yellow">
+                <div className="border-yellow relative flex w-full overflow-hidden rounded-lg border">
                   <span className="pointer-events-none absolute right-14 top-2 select-none font-medium">
                     {sumOption?.isTaxPct ? "%" : "฿"}
                   </span>
@@ -729,7 +727,7 @@ const Home = () => {
                         isTaxPct: !sumOption.isTaxPct,
                       }))
                     }
-                    className="bg-white px-2 text-black/70 ring-2 ring-yellow transition-all hover:bg-yellow hover:text-white"
+                    className="ring-yellow hover:bg-yellow bg-white px-2 text-black/70 ring-2 transition-all hover:text-white"
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
