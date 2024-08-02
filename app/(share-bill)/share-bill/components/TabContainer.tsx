@@ -1,8 +1,34 @@
 "use client";
 import { useState } from "react";
+import PeopleTab from "./PeopleTab";
+import OrderTab from "./OrderTab";
+import SumTab from "./SumTab";
+import {
+  UserIcon,
+  DocumentCurrencyDollarIcon,
+  BanknotesIcon,
+} from "@heroicons/react/24/solid";
 
-const TabContainer = ({ children }: any) => {
-  const [activeTab, setActiveTab] = useState(children[1].props.id);
+const menuItems = [
+  {
+    id: 1,
+    component: <PeopleTab />,
+    icon: <UserIcon className="size-8" />,
+  },
+  {
+    id: 2,
+    component: <OrderTab />,
+    icon: <DocumentCurrencyDollarIcon className="size-8" />,
+  },
+  {
+    id: 3,
+    component: <SumTab />,
+    icon: <BanknotesIcon className="size-8" />,
+  },
+];
+
+const TabContainer = () => {
+  const [activeTab, setActiveTab] = useState(menuItems[1].id);
 
   const handleClick = (event: any, newActiveTab: any) => {
     event.preventDefault();
@@ -11,28 +37,28 @@ const TabContainer = ({ children }: any) => {
 
   return (
     <>
-      <article>
-        {children.map((child: any) => {
-          if (child.props.id === activeTab) {
-            return (
-              <section key={child.props.id}>{child.props.children}</section>
-            );
+      <section className="relative min-h-[calc(100svh-101px)]">
+        {menuItems.map((item: any) => {
+          if (item.id === activeTab) {
+            return <section key={item.id}>{item.component}</section>;
           }
           return null;
         })}
-      </article>
+      </section>
 
-      <section className="sticky bottom-0 bg-slate-100">
-        <div className="flex justify-between">
-          {children.map((child: any) => (
+      <section className="sticky bottom-0 bg-indigo-400">
+        <div className="flex h-14 items-center justify-between divide-x">
+          {menuItems.map((item) => (
             <button
-              key={child.props.id}
+              key={item.id}
+              onClick={(e) => handleClick(e, item.id)}
               className={`${
-                activeTab === child.props.id ? "bg-slate-400 text-white" : ""
-              } flex-1 select-none py-2 font-medium text-primary`}
-              onClick={(e) => handleClick(e, child.props.id)}
+                activeTab === item.id
+                  ? "text-white"
+                  : "text-black hover:text-white"
+              } flex w-full select-none justify-center`}
             >
-              {child.props.id}
+              {item.icon}
             </button>
           ))}
         </div>
@@ -41,8 +67,4 @@ const TabContainer = ({ children }: any) => {
   );
 };
 
-const Tab = ({ Children }: any) => {
-  return <div id="tab-c">{Children}</div>;
-};
-
-export { TabContainer, Tab };
+export default TabContainer
