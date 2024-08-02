@@ -16,10 +16,7 @@ export default function RootLayout({
       <body>
         <div className="mx-auto flex max-w-screen-sm flex-col shadow-lg">
           <Navbar />
-          <main className="relative min-h-[calc(100svh-52px)]">{children}</main>
-          <footer className="p-1 text-center">
-            <p className="text-sm">nadesh52</p>
-          </footer>
+          <main>{children}</main>
         </div>
       </body>
     </html>
