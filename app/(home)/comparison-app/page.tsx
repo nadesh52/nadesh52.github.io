@@ -40,19 +40,19 @@ const ComparisonPage = () => {
   }, [items]);
 
   return (
-    <article className="relative mx-auto max-w-screen-xs">
-      <div id="inner" className="h-3/4 overflow-clip bg-white shadow-md">
-        <section className="relative h-24 w-full bg-accent">
+    <article className="relative">
+      <div id="inner" className="overflow-clip bg-white">
+        <section className="relative bg-secondary">
           <div className="flex justify-end p-3">
             <ResetButton wrapper={wrapperSetItem} />
           </div>
 
-          <div className="absolute left-1/2 top-[48px] flex -translate-x-1/2">
+          <div className="absolute left-1/2 top-4 flex -translate-x-1/2">
             <ResultCard items={items} />
           </div>
         </section>
 
-        <section className="mt-9 h-auto min-h-[505px]">
+        <section className="mt-9 min-h-[calc(100svh-225px)]">
           <div id="container" className="overflow-y-scroll">
             {items.length !== 0 ? (
               <DataList items={items} removeId={handleRemove} />
@@ -61,10 +61,8 @@ const ComparisonPage = () => {
             )}
           </div>
         </section>
-        <div className="w-full max-w-[425px]">
-          <div className="w-full bg-primary px-2 pb-2 pt-1">
-            <InputForm formData={handleForm} />
-          </div>
+        <div className="w-full bg-primary px-2 pb-2 pt-1">
+          <InputForm formData={handleForm} />
         </div>
       </div>
     </article>

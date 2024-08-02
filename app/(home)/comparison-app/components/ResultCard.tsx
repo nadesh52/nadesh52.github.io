@@ -30,23 +30,23 @@ const ResultCard = ({ items }: any) => {
   }, [items]);
 
   return (
-    <div className="relative bg-white rounded-md shadow p-3">
+    <div className="relative bg-white rounded shadow py-4 px-8">
       <div className="flex-grow flex gap-8 items-center justify-between min-[425px]:w-[350px] min-w-[250px]">
         <div className="text-center">
           <p className="sm:text-2xl font-medium">{result.quantity}</p>
-          <p className="text-xs text-accent">Quantity</p>
+          <p className="text-xs text-slate-400">Quantity</p>
         </div>
         <div className="text-center">
           <p className="sm:text-2xl font-medium">{result.price}</p>
-          <p className="text-xs text-accent">Price</p>
+          <p className="text-xs text-slate-400">Price</p>
         </div>
         <div className="text-center">
           <p className="sm:text-2xl font-medium">{result.count}</p>
-          <p className="text-xs text-accent">Count</p>
+          <p className="text-xs text-slate-400">Count</p>
         </div>
         <div className="text-center">
           <p className="sm:text-2xl font-semibold">{result.average}</p>
-          <p className="text-xs text-accent">Average</p>
+          <p className="text-xs text-slate-400">Average</p>
         </div>
       </div>
     </div>

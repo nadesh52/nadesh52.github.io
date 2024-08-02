@@ -11,20 +11,6 @@ const TabContainer = ({ children }: any) => {
 
   return (
     <>
-      <section className="flex border-b">
-        {children.map((child: any) => (
-          <button
-            key={child.props.id}
-            className={`${
-              activeTab === child.props.id ? "border-b-2 border-primary" : ""
-            } flex-1 text-primary font-medium py-2`}
-            onClick={(e) => handleClick(e, child.props.id)}
-          >
-            {child.props.id}
-          </button>
-        ))}
-      </section>
-
       <article>
         {children.map((child: any) => {
           if (child.props.id === activeTab) {
@@ -35,12 +21,28 @@ const TabContainer = ({ children }: any) => {
           return null;
         })}
       </article>
+
+      <section className="sticky bottom-0 bg-slate-100">
+        <div className="flex justify-between">
+          {children.map((child: any) => (
+            <button
+              key={child.props.id}
+              className={`${
+                activeTab === child.props.id ? "bg-slate-400 text-white" : ""
+              } flex-1 select-none py-2 font-medium text-primary`}
+              onClick={(e) => handleClick(e, child.props.id)}
+            >
+              {child.props.id}
+            </button>
+          ))}
+        </div>
+      </section>
     </>
   );
 };
 
 const Tab = ({ Children }: any) => {
-  return <>{Children}</>;
+  return <div id="tab-c">{Children}</div>;
 };
 
 export { TabContainer, Tab };

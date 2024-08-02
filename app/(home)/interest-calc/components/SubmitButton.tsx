@@ -4,7 +4,7 @@ const SubmitButton = () => {
   return (
     <button
       type="submit"
-      className="bg-secondary bg-opacity-80 text-white w-full p-2 rounded-lg hover:bg-opacity-100"
+      className="bg-secondary text-white w-full h-12 p-2 rounded"
     >
       Submit
     </button>

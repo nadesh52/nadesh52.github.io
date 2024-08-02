@@ -95,14 +95,14 @@ const InputForm = ({ formData }: any) => {
           onChange={handleChange}
           required
           placeholder="price"
-          className="h-10 w-full text-center outline-none rounded focus-within:ring-2 focus-within:ring-accent"
+          className="h-11 w-full text-center outline-none rounded focus-within:ring-2 focus-within:ring-accent"
         />
       </label>
 
       <label>
         <button
           type="submit"
-          className="bg-accent h-14 w-16 rounded text-white"
+          className="bg-accent w-fit py-2 px-4 rounded text-white"
         >
           <p className="text-lg font-medium">Add</p>
         </button>

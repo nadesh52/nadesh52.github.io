@@ -1,5 +1,5 @@
 "use client";
-import { ChevronUpDownIcon } from "@heroicons/react/24/outline";
+import { ChevronDownIcon } from "@heroicons/react/24/outline";
 import React, { useEffect, useRef, useState } from "react";
 
 const months = [3, 6, 9, 12, 24, 36];
@@ -47,12 +47,12 @@ const MonthSelect = ({ selectedValue, label }: any) => {
             </span>
           </>
         ) : (
-          <span className="pointer-events-none ml-3 text-lg text-black text-opacity-50">
+          <span className="pointer-events-none ml-2 text-lg text-black text-opacity-50">
             Select Month
           </span>
         )}
 
-        <ChevronUpDownIcon className="size-7 stroke-secondary stroke-1 pointer-events-none" />
+        <ChevronDownIcon className="size-6 mr-2 stroke-secondary stroke-1 pointer-events-none" />
 
         {!isHidden && (
           <div

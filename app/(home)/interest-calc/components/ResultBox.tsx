@@ -9,14 +9,14 @@ type ResultProps = {
 
 const ResultBox: FC<ResultProps> = (result: ResultProps) => {
   return (
-    <section className="bg-gradient-to-br from-40% from-secondary to-accent border border-grey rounded-lg p-4 max-w-[425px] mx-auto shadow-md">
-      <div className="border-b border-white pb-3">
+    <section className="bg-gradient-to-b from-40% from-secondary to-indigo-700 p-4">
+      <div className="border-b border-white pb-4">
         <p className="text-white">Total Value</p>
         <span className="text-white text-5xl font-medium">{result.total}</span>
-        <span className="text-white ml-3">Baht</span>
+        <span className="text-white ml-4">Baht</span>
       </div>
 
-      <div className="flex gap-3 items-center justify-evenly mt-3">
+      <div className="flex gap-4 items-center justify-evenly mt-4">
         <div className="text-center">
           <span className="text-white text-xl font-medium">
             {result.interest}

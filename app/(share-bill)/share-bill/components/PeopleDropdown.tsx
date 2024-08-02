@@ -33,17 +33,31 @@ const PeopleDropdown = ({ selectedPeople, peopleList }: any) => {
       <button
         onClick={(e) => {
           e.preventDefault();
-          setMenuOpen(true);
+          setMenuOpen(!menuOpen);
         }}
         ref={buttonRef}
-        className="bg-white border border-accent h-10 w-full shadow-md rounded-md peer"
+        className="peer flex h-10 w-full select-none items-center justify-between rounded border border-slate-400 bg-white px-4"
       >
-        Add people to list
+        <p className="pointer-events-none">Select People</p>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          strokeWidth={1.5}
+          stroke="currentColor"
+          className="pointer-events-none size-6"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="m19.5 8.25-7.5 7.5-7.5-7.5"
+          />
+        </svg>
       </button>
       {menuOpen ? (
         <div
           ref={menuRef}
-          className="absolute w-full mt-1 p-1 z-50 overflow-y-auto rounded-md shadow-md bg-white scrollbar-thin scrollbar-track-accent"
+          className="scrollbar-thin scrollbar-thumb-slate-400 scrollbar-track-slate-200 absolute z-50 max-h-48 w-full overflow-y-scroll rounded-md bg-white p-1 shadow"
         >
           <ul>
             {filteredPeople.length ? (
@@ -51,14 +65,14 @@ const PeopleDropdown = ({ selectedPeople, peopleList }: any) => {
                 <li
                   key={person.id}
                   onClick={(e) => handleSelect(e, person)}
-                  className="select-none cursor-pointer p-1 rounded text-primary hover:bg-accent"
+                  className="cursor-pointer select-none rounded p-1 text-primary hover:bg-accent"
                 >
-                  {person.name}
+                  <p>{person.name}</p>
                 </li>
               ))
             ) : (
-              <li className="text-sm select-none text-black/40">
-                People list is empty
+              <li className="select-none text-sm text-black/40">
+                <p>People list is empty</p>
               </li>
             )}
           </ul>

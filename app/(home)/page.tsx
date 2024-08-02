@@ -84,24 +84,24 @@ const appItems = [
 
 const Home = () => {
   return (
-    <article className="mx-auto mt-4 max-w-screen-sm px-4">
+    <article className="mx-auto mt-4 max-w-screen-2xs px-4">
       <p className="text-2xl font-medium">App</p>
-      <ul className="mt-4 grid gap-4 grid-cols-[repeat(3,auto)] justify-between">
+      <ul className="mt-4 grid w-full grid-cols-[repeat(1,1fr)] justify-between gap-4 2xs:grid-cols-[repeat(3,auto)]">
         {appItems.map((item, index) => (
           <li key={index}>
             <Link href={item.url}>
-              <div className="flex h-24 w-40 flex-col items-center justify-center rounded bg-secondary shadow-sm duration-100 hover:scale-105 hover:shadow-lg">
+              <div className="flex 2xs:size-24 w-full flex-col items-center justify-between rounded bg-secondary p-2 shadow-sm duration-100 hover:scale-105 hover:shadow-lg">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
                   strokeWidth={1.2}
                   stroke="currentColor"
-                  className="h-14 w-14 text-white"
+                  className="size-10 text-white"
                 >
                   {item.icon}
                 </svg>
-                <p className="font-medium text-white">{item.name}</p>
+                <p className="font-medium text-white text-center">{item.name}</p>
               </div>
             </Link>
           </li>

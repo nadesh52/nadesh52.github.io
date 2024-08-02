@@ -13,7 +13,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <div className="mx-auto flex max-w-screen-sm flex-col shadow-lg">
+        <div className="mx-auto flex flex-col">
           <main className="min-h-[calc(100svh-23px)]">{children}</main>
           <footer className="p-1 text-center">
             <p className="text-sm">nadesh52</p>

@@ -8,23 +8,23 @@ import { TabContainer, Tab } from "./components/TabContainer";
 
 const ShareBillPage = () => {
   return (
-    <main className="max-w-screen-sm w-[425px] content-center justify-self-center p-4 mt-14 mx-auto bg-white shadow-md rounded-lg">
+    <>
       <PeopleProvider>
         <OrderProvider>
           <TabContainer>
-            <Tab id="Summary">
-              <SumTab />
+            <Tab id="People">
+              <PeopleTab />
             </Tab>
             <Tab id="Menu">
               <OrderTab />
             </Tab>
-            <Tab id="People">
-              <PeopleTab />
+            <Tab id="Summary">
+              <SumTab />
             </Tab>
           </TabContainer>
         </OrderProvider>
       </PeopleProvider>
-    </main>
+    </>
   );
 };
 

@@ -46,7 +46,7 @@ const FixedPlan = ({ total }: any) => {
   };
 
   return (
-    <section className="bg-white rounded-lg shadow-lg py-3 px-3 w-full">
+    <>
       <form
         onSubmit={handleSubmit}
         className="grid grid-cols-2 gap-x-5 gap-y-2"
@@ -91,7 +91,7 @@ const FixedPlan = ({ total }: any) => {
           <SubmitButton />
         </div>
       </form>
-    </section>
+    </>
   );
 };
 

@@ -41,22 +41,23 @@ const SumTab = () => {
   }, [people, order]);
 
   return (
-    <article className="mt-4">
+    <article className="p-8">
+      <p className="text-lg font-medium">Summary</p>
       {people.length ? (
         <ul>
           {peopleFilter.map((person: any, idx: any) => (
             <li key={person.name} className="my-4">
               {person.orders.length ? (
                 <Accordion person={person}>
-                  <div className="grid grid-cols-12 gap-4 border-b-2 border-x-2 border-accent rounded-b p-2">
+                  <div className="grid grid-cols-12 gap-4 rounded-b border-x-2 border-b-2 border-accent p-2">
                     <div className="col-span-5">
                       <p className="text-sm text-black/70">Orders Summary</p>
-                      <table className="table-fixed w-full">
+                      <table className="w-full table-fixed">
                         <tbody>
                           {person.orders.map((o: any) => (
                             <tr key={o.id}>
                               <td>{o.name}</td>
-                              <td className="text-lg ml-2 font-medium">
+                              <td className="ml-2 text-lg font-medium">
                                 {o.price_per_people}
                               </td>
                             </tr>
@@ -66,7 +67,7 @@ const SumTab = () => {
                     </div>
 
                     <div className="col-span-4">
-                      <div className="flex flex-col items-centerr">
+                      <div className="items-centerr flex flex-col">
                         <p className="text-sm text-black/70">Amount Due</p>
                         <p className="text-2xl font-medium text-primary">
                           {person.total}
@@ -77,10 +78,10 @@ const SumTab = () => {
                     <div className="col-span-3 justify-self-center">
                       <button
                         onClick={() => togglePaidState(person.id)}
-                        className={`rounded w-fit py-2 px-4 cursor-pointer transition-all shadow-md ${
+                        className={`w-fit cursor-pointer rounded px-4 py-2 shadow-md transition-all ${
                           paid[person.id]
-                            ? "bg-green text-white"
-                            : "bg-red text-white"
+                            ? "bg-emerald-400 text-white"
+                            : "bg-rose-400 text-white"
                         }`}
                       >
                         {paid[person.id] ? "Paid" : "Unpaid"}
@@ -93,7 +94,7 @@ const SumTab = () => {
           ))}
         </ul>
       ) : (
-        <div className="flex gap-2 items-center justify-center">
+        <div className="flex select-none flex-col items-center justify-center">
           <div>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -101,7 +102,7 @@ const SumTab = () => {
               viewBox="0 0 24 24"
               strokeWidth={1.5}
               stroke="currentColor"
-              className="size-6 text-red"
+              className="text-red size-6"
             >
               <path
                 strokeLinecap="round"
@@ -110,7 +111,7 @@ const SumTab = () => {
               />
             </svg>
           </div>
-          <span className="text-red text-center text-lg">No people</span>
+          <p className="text-red text-center text-lg">No people</p>
         </div>
       )}
     </article>

@@ -14,19 +14,19 @@ const InterestCalcPage = () => {
   const [toggleTab, setToggleTab] = useState(1);
 
   return (
-    <article className="mx-auto max-w-screen-xs">
+    <article>
       <ResultBox {...result} />
 
       <section
         id="tab"
-        className="mx-auto mt-4 max-w-screen-xs rounded-md border border-base bg-white"
+        className="bg-white"
       >
-        <div className="grid grid-cols-2 my-2">
+        <div className="grid grid-cols-2 my-4">
           <button
             className={` ${
               toggleTab === 1
-                ? "border-b-2 border-secondary border-opacity-100 text-lg font-medium text-secondary"
-                : "text-md font-normal text-black text-opacity-60"
+                ? "border-b-2 border-secondary border-opacity-100 text-lg font-medium text-secondary bg-secondary/10"
+                : "text-md font-normal text-black text-opacity-50"
             } mx-4 py-4 transition-all hover:bg-slate-100`}
             onClick={() => setToggleTab(1)}
           >
@@ -36,20 +36,20 @@ const InterestCalcPage = () => {
           <button
             className={` ${
               toggleTab === 2
-                ? "border-b-2 border-secondary border-opacity-100 text-lg font-medium text-secondary"
-                : "text-md font-normal text-black text-opacity-60"
-            } mx-4 py-4 transition-all hover:bg-slate-100`}
+                ? "border-b-2 border-secondary border-opacity-100 text-lg font-medium text-secondary bg-secondary/10"
+                : "text-md font-normal text-black text-opacity-50"
+            } mx-4 py-4 transition-all hover:bg-secondary/5`}
             onClick={() => setToggleTab(2)}
           >
             <span>Fixed Rate</span>
           </button>
         </div>
 
-        <div id="tab1" className={`${toggleTab === 1 ? "block" : "hidden"}`}>
+        <div id="tab1" className={`${toggleTab === 1 ? "block p-4" : "hidden"}`}>
           <SavingPlan total={(e: any) => setResult(e)} />
         </div>
 
-        <div id="tab2" className={`${toggleTab === 2 ? "block" : "hidden"}`}>
+        <div id="tab2" className={`${toggleTab === 2 ? "block p-4" : "hidden"}`}>
           <FixedPlan total={(e: any) => setResult(e)} />
         </div>
       </section>

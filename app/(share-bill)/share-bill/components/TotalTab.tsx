@@ -47,7 +47,7 @@ const TotalTab = () => {
 
   const handleDelete = (event: any, _order: any) => {
     event.preventDefault();
-    setOrder(order.filter((item: any) => item.name !== _order.name));
+    setOrder(order.filter((item: any) => item.id !== _order.id));
   };
 
   const handleChange = (event: any) => {
@@ -100,10 +100,11 @@ const TotalTab = () => {
   const editForm = () => {
     return (
       <>
-        <form onSubmit={handleSubmit} className="relative">
-          <p className="text-3xl font-medium mb-4">Edit Menu</p>
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <p className="text-lg font-medium">Edit Menu</p>
 
-          <label className="relative">
+          <label className="block">
+            <p className="select-none">Menu</p>
             <input
               name="name"
               type="text"
@@ -111,14 +112,12 @@ const TotalTab = () => {
               required
               value={editValue?.name || ""}
               onChange={handleChange}
-              className="border-b border-b-accent my-4 h-8 w-full px-2 outline-none transition focus-visible:border-b-2 peer"
+              className="h-10 w-full rounded border border-slate-400 px-2 outline-none transition focus-visible:border-2 focus-visible:border-slate-600"
             />
-            <p className="absolute top-0 left-0 pointer-events-none text-black/70 transition-all peer-valid:-translate-y-5 peer-valid:text-sm peer-valid:text-black/40 peer-focus-visible:text-black/40 peer-focus-visible:-translate-y-5 peer-focus-visible:text-sm">
-              Menu
-            </p>
           </label>
 
-          <label className="relative">
+          <label className="relative block">
+            <p className="select-none">Price</p>
             <input
               name="price"
               type="text"
@@ -126,19 +125,16 @@ const TotalTab = () => {
               required
               value={editValue?.price || ""}
               onChange={handleChange}
-              className="border-b border-b-accent my-4 h-8 w-full pl-2 pr-12 outline-none focus-visible:border-b-2 peer"
+              className="peer h-10 w-full rounded border border-slate-400 px-2 outline-none transition focus-visible:border-2 focus-visible:border-slate-600"
             />
-            <p className="absolute top-0 left-0 pointer-events-none text-black/70 transition-all peer-valid:-translate-y-5 peer-valid:text-sm peer-valid:text-black/40 peer-focus-visible:text-black/40 peer-focus-visible:-translate-y-5 peer-focus-visible:text-sm">
-              Price
-            </p>
-            <span className="absolute right-0 bottom-0 border-l border-l-accent px-1 select-none pointer-events-none hidden peer-valid:inline-block peer-focus-visible:inline-block">
+            <p className="pointer-events-none invisible absolute bottom-2 right-1 select-none border-l border-l-slate-400 px-2 peer-valid:visible peer-focus-visible:visible">
               THB
-            </span>
+            </p>
           </label>
 
           <label>
             <p className="text-black/70">Quantity</p>
-            <div className="flex justify-end">
+            <div className="flex gap-4">
               <input
                 name="quantity"
                 type="number"
@@ -146,22 +142,22 @@ const TotalTab = () => {
                 required
                 value={editValue?.quantity || ""}
                 onChange={handleChange}
-                className="bg-white outline-none w-24 border border-accent order-2 text-center text-lg font-medium"
+                className="order-1 h-10 w-full rounded border border-slate-400 bg-white px-2 outline-none focus-visible:border-2 focus-visible:border-slate-600"
               />
               <button
                 disabled={isDisable}
                 onClick={(e) => handleCountClick(e, "decrease")}
-                className={`p-1 size-10 rounded-l border-y border-l border-accent order-1 ${
-                  isDisable ? "text-grey" : ""
+                className={`order-2 rounded px-2 transition-all ${
+                  isDisable ? "bg-slate-200 text-slate-400" : "bg-emerald-400"
                 }`}
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
-                  strokeWidth={1.5}
+                  strokeWidth={1}
                   stroke="currentColor"
-                  className="size-8"
+                  className="size-6"
                 >
                   <path
                     strokeLinecap="round"
@@ -173,15 +169,15 @@ const TotalTab = () => {
 
               <button
                 onClick={(e) => handleCountClick(e, "increase")}
-                className="p-1 size-10 rounded-r border-y border-r border-accent order-3"
+                className="order-3 rounded bg-emerald-400 px-2"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
-                  strokeWidth={1.5}
+                  strokeWidth={1}
                   stroke="currentColor"
-                  className="size-8"
+                  className="size-6"
                 >
                   <path
                     strokeLinecap="round"
@@ -193,93 +189,64 @@ const TotalTab = () => {
             </div>
           </label>
 
-          <section className="p-2 shadow rounded mb-4">
+          <section>
+            <p className="select-none">Add People</p>
             <PeopleDropdown
               selectedPeople={handleSelectedPeople}
               peopleList={filteredPeople}
             />
 
-            <div className="flex flex-wrap gap-3 w-full mt-4">
+            <ul className="flex flex-wrap gap-2 p-2">
               {filteredPeople.map((person: any) => (
-                <div
-                  key={person.id}
-                  className="flex justify-between gap-1 rounded-md w-fit px-1 border border-primary"
-                >
-                  <span>{person.name}</span>
+                <li key={person.id}>
                   <button
                     onMouseDown={(e) => e.preventDefault()}
                     onClick={() => handleRemovePeople(person)}
+                    className="w-fit rounded-full border border-slate-400 p-2"
                   >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      strokeWidth={1}
-                      stroke="currentColor"
-                      className="w-5 h-5 text-red"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="m9.75 9.75 4.5 4.5m0-4.5-4.5 4.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
-                      />
-                    </svg>
+                    {person.name}
                   </button>
-                </div>
+                </li>
               ))}
-            </div>
+            </ul>
           </section>
 
           <div className="mt-4 flex flex-col gap-4">
             <button
               type="submit"
-              onClick={() => {
-                setOpen(false);
-              }}
-              className="bg-accent rounded h-10 w-full"
+              onClick={() => setOpen(false)}
+              className="h-10 w-full rounded bg-emerald-400 font-medium text-white hover:bg-emerald-600"
             >
               Save
             </button>
-            <button
-              type="button"
-              onClick={() => {
-                setOpen(false);
-              }}
-              className="w-full h-10 border border-red text-red rounded hover:bg-red hover:text-white"
-            >
-              Cancel
-            </button>
-          </div>
+            <div className="flex gap-4">
+              <button
+                type="button"
+                onClick={(e: any) => {
+                  setOpen(false);
+                  handleDelete(e, editValue);
+                }}
+                className="h-10 w-full rounded border border-rose-400 text-rose-400 transition-all hover:border-rose-600 hover:bg-rose-600 hover:text-white"
+              >
+                Delete Menu
+              </button>
 
-          <button
-            onClick={(e: any) => {
-              setOpen(false);
-              handleDelete(e, editValue);
-            }}
-            className="absolute top-0 right-0 text-red disabled:text-grey"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={1.5}
-              stroke="currentColor"
-              className="size-8"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0"
-              />
-            </svg>
-          </button>
+              <button
+                type="button"
+                onClick={() => setOpen(false)}
+                className="h-10 w-full rounded border border-slate-600 transition-all hover:bg-slate-600 hover:text-white"
+              >
+                Cancel
+              </button>
+            </div>
+          </div>
         </form>
       </>
     );
   };
 
   return (
-    <section className="rounded mt-5">
+    <div>
       <Modal
         open={open}
         onClose={() => {
@@ -288,57 +255,46 @@ const TotalTab = () => {
       >
         {editForm()}
       </Modal>
+
+      <p className="text-lg font-medium">Created Menu</p>
       <ul>
         {order.length
           ? order.map((o: any, i: any) => (
               <li
                 key={i}
-                className="relative border border-primary/5 bg-white shadow-lg h-full my-4 p-2 rounded group"
+                className="group border-b border-slate-200 bg-white py-4"
               >
-                <div className="relative grid grid-cols-12 gap-2">
+                <div className="grid grid-cols-12 gap-2">
                   <div className="col-span-6">
-                    <p className="font-medium text-lg mb-2">{o.name}</p>
+                    <p className="text-lg font-medium">{o.name}</p>
 
-                    <div>
-                      <ul className="flex flex-wrap gap-2 items-center">
-                        {o.people?.map((person: any, i: any) => (
-                          <li key={i}>
-                            <span className="border border-primary rounded px-1">
-                              {person?.name}
-                            </span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
+                    <p className="text-sm">x {o.quantity}</p>
 
-                    <div>
-                      {o.people.length ? (
-                        <>
-                          <p>
-                            <span className="text-lg font-medium mr-1">
-                              {o.price_per_people}
-                            </span>
-                            each
+                    <ul className="mt-2 flex flex-wrap items-center gap-2">
+                      {o.people?.map((person: any, i: any) => (
+                        <li key={i}>
+                          <p className="w-fit rounded bg-slate-300 px-1">
+                            {person?.name}
                           </p>
-                        </>
-                      ) : null}
-                    </div>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
 
-                  <div className="col-span-4 flex flex-col flex-wrap justify-center text-right">
-                    <p className="text-2xl font-medium">{o.total}</p>
-                    <span className="text-sm font-light">
-                      {o.price} x {o.quantity}
-                    </span>
+                  <div className="col-span-4 flex flex-col justify-center text-right">
+                    <p className="text-lg font-medium">{o.total}</p>
+                    {o.people.length ? (
+                      <p className="text-sm">{o.price_per_people} each</p>
+                    ) : null}
                   </div>
 
-                  <div className="col-span-2 flex flex-col justify-center items-end gap-4">
+                  <div className="col-span-2 flex flex-col items-end justify-center gap-4">
                     <button
                       onClick={(e: any) => {
                         setOpen(true);
                         handleEdit(e, o);
                       }}
-                      className="w-fit bg-accent/20 rounded-full p-2"
+                      className="w-fit rounded-full bg-teal-100 p-2"
                     >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -346,7 +302,7 @@ const TotalTab = () => {
                         viewBox="0 0 24 24"
                         strokeWidth={1.5}
                         stroke="currentColor"
-                        className="size-5 pointer-events-none"
+                        className="pointer-events-none size-6"
                       >
                         <path
                           strokeLinecap="round"
@@ -361,7 +317,7 @@ const TotalTab = () => {
             ))
           : null}
       </ul>
-    </section>
+    </div>
   );
 };
 
