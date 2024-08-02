@@ -37,7 +37,7 @@ const TabContainer = () => {
 
   return (
     <>
-      <section className="relative min-h-[calc(100svh-101px)]">
+      <section className="relative min-h-[calc(100svh-108px)]">
         {menuItems.map((item: any) => {
           if (item.id === activeTab) {
             return <section key={item.id}>{item.component}</section>;
@@ -47,7 +47,7 @@ const TabContainer = () => {
       </section>
 
       <section className="sticky bottom-0 bg-indigo-400">
-        <div className="flex h-14 items-center justify-between divide-x">
+        <div className="flex items-center justify-between divide-x">
           {menuItems.map((item) => (
             <button
               key={item.id}
@@ -56,7 +56,7 @@ const TabContainer = () => {
                 activeTab === item.id
                   ? "text-white"
                   : "text-black hover:text-white"
-              } flex w-full select-none justify-center`}
+              } flex w-full select-none justify-center py-4`}
             >
               {item.icon}
             </button>

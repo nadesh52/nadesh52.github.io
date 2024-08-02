@@ -1,7 +1,6 @@
 "use client";
 import React, { useState } from "react";
 import { useOrder } from "@/context/OrderContext";
-import TotalTab from "./TotalTab";
 import PeopleDropdown from "./PeopleDropdown";
 import { usePeople } from "@/context/PeopleContext";
 

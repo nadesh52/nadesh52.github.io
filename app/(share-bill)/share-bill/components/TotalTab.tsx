@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useOrder } from "@/context/OrderContext";
 import PeopleDropdown from "./PeopleDropdown";
 import { Modal } from "./Modal";
@@ -245,6 +245,22 @@ const TotalTab = () => {
     );
   };
 
+  useEffect(() => {    
+    const updatedArr = order.map((item:any) => {
+
+      const total = item.price * item.quantity;
+      const price = total / item.people.filter((person:any) => people.some((p:any)=> p.id === person.id)).length
+
+      return {
+        ...item,
+        people: item.people.filter((person:any) => people.some((p:any)=> p.id === person.id)),
+        total: total,
+        price_per_people: price,
+      }
+    })
+    setOrder(updatedArr)
+  }, [people]);
+
   return (
     <div>
       <Modal
@@ -258,7 +274,7 @@ const TotalTab = () => {
 
       <p className="text-lg font-medium">Created Menu</p>
       <ul>
-        {order.length
+        {order?.length
           ? order.map((o: any, i: any) => (
               <li
                 key={i}
