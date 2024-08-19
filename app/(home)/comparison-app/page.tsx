@@ -39,6 +39,7 @@ const ComparisonPage = () => {
     localStorage.setItem("items", JSON.stringify(items));
   }, [items]);
 
+
   return (
     <article className="relative">
       <div id="inner" className="overflow-clip bg-white">

@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { useOrder } from "@/context/OrderContext";
-import PeopleDropdown from "./PeopleDropdown";
+import PeopleSelection from "./PeopleSelection";
 import { usePeople } from "@/context/PeopleContext";
 
 const inputsInit = { price: 0, quantity: 1, people: [] };
@@ -18,7 +18,7 @@ const OrderCreate = () => {
   const handleChange = (event: any) => {
     const { name, value } = event.target;
 
-    const generatedId = Math.floor(Date.now() * Math.random())
+    const generatedId = Math.floor(Date.now() * Math.random());
 
     if (name !== "name") {
       const numValue = !isNaN(value) ? parseFloat(value) : value;
@@ -73,7 +73,7 @@ const OrderCreate = () => {
   const handleRemovePeople = (person: any) => {
     setInputs({
       ...inputs,
-      people: inputs.people.filter((p: any) => p.name !== person.name),
+      people: inputs.people.filter((p: any) => p.id !== person.id),
     });
   };
 
@@ -85,7 +85,7 @@ const OrderCreate = () => {
       <form onSubmit={handleSubmit}>
         <section className="space-y-4">
           <label className="block">
-            <p className="select-none">Menu</p>
+            <p className="select-none font-medium">Menu</p>
             <input
               name="name"
               type="text"
@@ -98,7 +98,7 @@ const OrderCreate = () => {
           </label>
 
           <label className="relative block">
-            <p className="select-none">Price</p>
+            <p className="select-none font-medium">Price</p>
             <input
               name="price"
               type="number"
@@ -114,7 +114,7 @@ const OrderCreate = () => {
           </label>
 
           <label className="block">
-            <p className="select-none">Quantity</p>
+            <p className="select-none font-medium">Quantity</p>
             <div className="flex gap-4">
               <input
                 name="quantity"
@@ -171,26 +171,30 @@ const OrderCreate = () => {
           </label>
 
           <div>
-            <p className="select-none">Add People</p>
+            <p className="select-none font-medium">People in Order</p>
             <section>
-              <PeopleDropdown
+              <PeopleSelection
                 selectedPeople={handleSelectedPeople}
                 peopleList={filteredPeople}
               />
-
-              <ul className="flex flex-wrap gap-2 p-2">
-                {filteredPeople.map((person: any) => (
-                  <li key={person.id}>
-                    <button
-                      onMouseDown={(e) => e.preventDefault()}
-                      onClick={() => handleRemovePeople(person)}
-                      className="w-fit rounded-full border border-slate-400 p-2"
-                    >
-                      {person.name}
-                    </button>
-                  </li>
-                ))}
-              </ul>
+              {filteredPeople.length ? (
+                <>
+                  <p>Selected</p>
+                  <ul className="flex flex-wrap gap-2 p-2">
+                    {filteredPeople.map((person: any) => (
+                      <li key={person.id}>
+                        <button
+                          onMouseDown={(e) => e.preventDefault()}
+                          onClick={() => handleRemovePeople(person)}
+                          className="w-fit rounded bg-slate-400 p-2"
+                        >
+                          {person.name}
+                        </button>
+                      </li>
+                    ))}
+                  </ul>
+                </>
+              ) : null}
             </section>
           </div>
         </section>

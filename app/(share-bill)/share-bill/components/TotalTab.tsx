@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { useOrder } from "@/context/OrderContext";
-import PeopleDropdown from "./PeopleDropdown";
+import PeopleSelection from "./PeopleSelection";
 import { Modal } from "./Modal";
 import { usePeople } from "@/context/PeopleContext";
 
@@ -190,11 +190,7 @@ const TotalTab = () => {
           </label>
 
           <section>
-            <p className="select-none">Add People</p>
-            <PeopleDropdown
-              selectedPeople={handleSelectedPeople}
-              peopleList={filteredPeople}
-            />
+            <p className="select-none font-medium">People</p>
 
             <ul className="flex flex-wrap gap-2 p-2">
               {filteredPeople.map((person: any) => (
@@ -202,13 +198,22 @@ const TotalTab = () => {
                   <button
                     onMouseDown={(e) => e.preventDefault()}
                     onClick={() => handleRemovePeople(person)}
-                    className="w-fit rounded-full border border-slate-400 p-2"
+                    className="w-fit rounded border border-slate-400 p-2"
                   >
                     {person.name}
                   </button>
                 </li>
               ))}
             </ul>
+            {!filteredPeople.length ? (
+              <>
+                <p>removed</p>
+                <PeopleSelection
+                  selectedPeople={handleSelectedPeople}
+                  peopleList={filteredPeople}
+                />
+              </>
+            ) : null}
           </section>
 
           <div className="mt-4 flex flex-col gap-4">
@@ -245,20 +250,25 @@ const TotalTab = () => {
     );
   };
 
-  useEffect(() => {    
-    const updatedArr = order.map((item:any) => {
-
+  useEffect(() => {
+    const updatedArr = order.map((item: any) => {
       const total = item.price * item.quantity;
-      const price = total / item.people.filter((person:any) => people.some((p:any)=> p.id === person.id)).length
+      const price =
+        total /
+        item.people.filter((person: any) =>
+          people.some((p: any) => p.id === person.id),
+        ).length;
 
       return {
         ...item,
-        people: item.people.filter((person:any) => people.some((p:any)=> p.id === person.id)),
+        people: item.people.filter((person: any) =>
+          people.some((p: any) => p.id === person.id),
+        ),
         total: total,
         price_per_people: price,
-      }
-    })
-    setOrder(updatedArr)
+      };
+    });
+    setOrder(updatedArr);
   }, [people]);
 
   return (
@@ -282,9 +292,10 @@ const TotalTab = () => {
               >
                 <div className="grid grid-cols-12 gap-2">
                   <div className="col-span-6">
-                    <p className="text-lg font-medium">{o.name}</p>
-
-                    <p className="text-sm">x {o.quantity}</p>
+                    <p>
+                      <span className="text-lg font-medium">{o.name}</span> 
+                      <span className="text-slate-400 text-sm"> x {o.quantity}</span>
+                    </p>
 
                     <ul className="mt-2 flex flex-wrap items-center gap-2">
                       {o.people?.map((person: any, i: any) => (
