@@ -10,10 +10,6 @@ const config: Config = {
     extend: {
       fontFamily: { noto: ["Noto Sans Thai"], josefin: ["Josefin Sans"] },
       colors: {
-        primary: "#211951",
-        secondary: "#836FFF",
-        base: "#F0F3FF",
-        accent: "#15F5BA",
         type: {
           all: {
             normal: "#68A090",
@@ -113,11 +109,6 @@ const config: Config = {
         },
       },
       borderColor: {
-        DEFAULT: "#DBEDF3",
-        primary: "#211951",
-        secondary: "#836FFF",
-        base: "#F0F3FF",
-        accent: "#15F5BA",
         type: {
           all: {
             normal: "#68A090",
@@ -275,6 +266,9 @@ const config: Config = {
       },
     },
   },
-  plugins: [require("tailwind-scrollbar")],
+  daisyui: {
+    themes: ["lofi"],
+  },
+  plugins: [require("daisyui"), require("tailwind-scrollbar")],
 };
 export default config;

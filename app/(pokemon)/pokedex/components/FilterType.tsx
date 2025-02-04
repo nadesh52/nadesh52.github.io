@@ -1,5 +1,5 @@
 import { ChangeEvent, useState } from "react";
-import { typePokemon } from "@/types/Pokemon";
+import { typePokemon } from "@/app/(pokemon)/types/Pokemon";
 import Image from "next/image";
 
 function FilterType({ selectedType }: any) {
@@ -11,10 +11,10 @@ function FilterType({ selectedType }: any) {
   };
 
   return (
-    <div className="bg-white rounded-lg p-5 my-5 w-fit mx-auto shadow-md">
-      <div className="justify-center grid grid-cols-[repeat(7,_30px)] xs:grid-cols-[repeat(9,_30px)] sm:grid-cols-[repeat(10,_30px)] gap-3">
+    <div className="mx-auto w-fit rounded bg-base-100 p-4 shadow-md">
+      <div className="grid grid-cols-[repeat(7,_30px)] justify-center gap-3 xs:grid-cols-[repeat(9,_30px)] sm:grid-cols-[repeat(10,_30px)]">
         {typePokemon.map((type, i) => (
-          <div key={i} className="justify-self-center h-[30px]">
+          <div key={i} className="h-[30px] justify-self-center">
             <label htmlFor={type.name} className="inline-block cursor-pointer">
               <input
                 type="radio"
@@ -23,9 +23,9 @@ function FilterType({ selectedType }: any) {
                 checked={selectedValue === type.name}
                 value={type.name}
                 onChange={handleChange}
-                className="hidden peer"
+                className="peer hidden"
               />
-              {/* /assets/icons/types/${type.name}.png */}
+              
               <Image
                 src={require(`@/public/assets/icons/types/${type.name}.png`)}
                 alt={`icon-${type.name}`}

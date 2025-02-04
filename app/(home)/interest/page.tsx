@@ -1,0 +1,51 @@
+"use client";
+import React, { useState } from "react";
+import FixedPlan from "./components/FixedPlan";
+import ResultBox from "./components/ResultBox";
+import SavingPlan from "./components/SavingPlan";
+import { ResultProvider } from "./contexts/ResultContext";
+
+const InterestCalcPage = () => {
+  return (
+    <ResultProvider>
+      <section>
+        <article className="mx-auto mt-20 flex max-w-screen-md items-start gap-4">
+          <div role="tablist" className="tabs tabs-lifted w-full">
+            <input
+              type="radio"
+              name="my_tabs_2"
+              role="tab"
+              className="tab [--tab-border-color:black] text-md italic"
+              aria-label="Saving Plan"
+            />
+            <div
+              role="tabpanel"
+              className="tab-content border-primary bg-base-100 p-6 pt-10"
+            >
+              <SavingPlan />
+            </div>
+
+            <input
+              type="radio"
+              name="my_tabs_2"
+              role="tab"
+              className="tab [--tab-border-color:black] text-md italic"
+              aria-label="Fixed Plan"
+              defaultChecked
+            />
+            <div
+              role="tabpanel"
+              className="tab-content border-primary bg-base-100 p-6 pt-10"
+            >
+              <FixedPlan />
+            </div>
+          </div>
+
+          <ResultBox />
+        </article>
+      </section>
+    </ResultProvider>
+  );
+};
+
+export default InterestCalcPage;

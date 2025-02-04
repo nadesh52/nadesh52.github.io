@@ -1,0 +1,16 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wdth,wght@62.5..100,100..900&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    .a4 {
+      @apply min-w-[210mm] w-[210mm] min-h-[297mm] h-[297mm] bg-white;
+    }
+  
+    .hidden-capture {
+      @apply invisible
+    }
+  }
+  

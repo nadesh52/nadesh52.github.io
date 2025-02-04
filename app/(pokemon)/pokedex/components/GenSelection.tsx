@@ -1,6 +1,6 @@
 "use client";
-import { Generation, generations } from "@/types/Generation";
-import { capitalize } from "@/utils/capitalize";
+import { Generation, generations } from "@/app/(pokemon)/types/Generation";
+import { capitalize } from "@/app/(home)/interest/utils/capitalize";
 import { useEffect, useRef, useState } from "react";
 
 const GenSelection = ({ selectedGen }: any) => {

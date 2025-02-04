@@ -164,7 +164,7 @@ const TechList = () => {
       ref={oRef}
       className={` ${isMaximize ? "h-full w-full" : "h-full w-1/2"} shadow-lg transition-all select-none duration-500`}
     >
-      <div className="relative h-8 w-full rounded-t-md bg-slate-300">
+      <div className="relative h-8 w-full rounded-t-md bg-type-fire-light">
         <div className="absolute left-2 top-1/2 flex h-full -translate-y-1/2">
           <div className="flex h-full w-fit items-center gap-2">
             <Cog6ToothIcon className="size-6" />
