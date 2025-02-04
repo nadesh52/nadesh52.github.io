@@ -1,69 +1,61 @@
 "use client";
-import { useEffect, useState } from "react";
+import React, { useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
 import logo from "@/public/assets/logos/pokeball_logo.png";
-import { Pokemon } from "@/types/Pokemon";
-import { Generation, generations } from "@/types/Generation";
+import { Pokemon } from "../../types/Pokemon";
+import { Generation, generations } from "../../types/Generation";
 import GenSelection from "../components/GenSelection";
 import FilterType from "../components/FilterType";
 import Card from "../components/Card";
-import Image from "next/image";
-import useFetcher from "@/hooks/fetcher";
-import LoadingBlock from "../components/LoadingBlock";
-import Link from "next/link";
+import useFetcher from "../../hooks/useFetcher";
 
 const PokemonsTable = () => {
   const [selectedTypes, setSelectedTypes] = useState<string>("all");
   const [gens, setGens] = useState<Generation>(generations[0]);
 
-  const { pokemonsData, isPending, setReFetch } = useFetcher(
-    gens.offset,
-    gens.limit
-  );
+  const { pokemonsData, isPending, setRefetch } = useFetcher(gens);
 
   const handleSelectGen = (e: any) => {
     setGens(e);
     setSelectedTypes("all");
-    setReFetch({});
+    setRefetch({});
   };
-
-  useEffect(() => {}, []);
 
   return (
     <section className="bg-skin-white">
-      <nav className="flex justify-between items-center px-4">
-        <div className="hover:rotate-45 transition">
-          <a href="/pokedex">
+      <nav className="flex items-center justify-between p-4">
+        <div className="transition hover:rotate-45">
+          <Link href="/pokedex">
             <Image src={logo} alt="" height={40} width={40} />
-          </a>
+          </Link>
         </div>
-        <ul className="flex items-center">
-          <li>
-            <Link href="/">
-              <p className="font-josefin font-medium text-lg py-1 px-2 w-fit bg-skin-fill rounded-md hover:text-skin-base hover:bg-skin-fill-dark transition">
-                Home
-              </p>
-            </Link>
-          </li>
-        </ul>
+        <Link href="/pokedex" className="btn btn-outline btn-primary">
+          Home
+        </Link>
       </nav>
 
+      <div className="mx-auto space-y-4">
+        <GenSelection selectedGen={handleSelectGen} />
+        <FilterType selectedType={setSelectedTypes} />
+        <p className="text-center font-josefin text-2xl font-medium text-secondary">
+          {gens.region.toUpperCase()}
+        </p>
+      </div>
+
       {isPending ? (
-        <LoadingBlock />
+        <div className="mx-auto grid max-w-screen-xl grid-cols-2 gap-3 p-4 transition-all sm:grid-cols-4 lg:grid-cols-6">
+          {Array.from({ length: 30 }).map((_, idx: any) => (
+            <div key={idx} className="skeleton h-36 w-full"></div>
+          ))}
+        </div>
       ) : (
         <>
-          <div className="max-w-screen-lg mx-auto my-5">
-            <GenSelection selectedGen={(e: any) => handleSelectGen(e)} />
-            <FilterType selectedType={(e: any) => setSelectedTypes(e)} />
-            <p className="text-center text-2xl text-secondary font-josefin font-medium">
-              {gens.region.toUpperCase()}
-            </p>
-          </div>
-
-          <div className="max-w-screen-xl grid grid-cols-2 sm:grid-cols-4 mx-auto gap-3 px-4 pt-2 pb-5 transition-all">
+          <div className="mx-auto grid max-w-screen-xl grid-cols-2 gap-3 p-4 transition-all sm:grid-cols-4 lg:grid-cols-6">
             {selectedTypes === "all" ? (
               <>
                 {pokemonsData.map((pokemon: Pokemon) => (
-                  <Card key={pokemon.id} content={pokemon} />
+                  <Card key={pokemon.id} pokemon={pokemon} />
                 ))}
               </>
             ) : (
@@ -75,7 +67,7 @@ const PokemonsTable = () => {
                     });
                   })
                   .map((pokemon: Pokemon) => (
-                    <Card key={pokemon.id} content={pokemon} />
+                    <Card key={pokemon.id} pokemon={pokemon} />
                   ))}
               </>
             )}

@@ -1,18 +1,19 @@
 "use client";
+import "@/styles/pokemon.css";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import logo from "@/public/assets/logos/pokeball_logo.png";
-import padNumber from "@/utils/padNumber";
-import randomNumber from "@/utils/randomNumber";
-import getTheme from "@/utils/getTheme";
-import getRandomFavor from "@/utils/getRandomFavor";
-import getPokemonName from "@/utils/getPokemonName";
+import padNumber from "@/app/(pokemon)/utils/padNumber";
+import randomNumber from "@/app/(pokemon)/utils/randomNumber";
+import getTheme from "@/app/(pokemon)/utils/getTheme";
+import getRandomFavor from "@/app/(pokemon)/utils/getRandomFavor";
+import getPokemonName from "@/app/(pokemon)/utils/getPokemonName";
 import Image from "next/image";
 import LoadingBlock from "./components/LoadingBlock";
 import NavPokemon from "./components/NavPokemon";
 import EvoChain from "./components/EvoChain";
 import DiscoverButton from "./components/DiscoverButton";
-import { typeColor } from "@/types/TypeColor";
+import { typeColor } from "@/app/(pokemon)/types/TypeColor";
 
 const initPoke = {
   id: 0,
@@ -38,7 +39,7 @@ const titleStr2 =
   "Pokémon inhabit an extremely diverse range of habitats,ranging from the driest deserts to the lushest jungles, thedeepest oceans to the highest mountains and everything else inbetween, even outer space and other dimensions.";
 
 const LandingPage = () => {
-  const [pokeId, setPokeId] = useState(randomNumber);
+  const [randomId, setRandomId] = useState(randomNumber);
   const [pokemon, setPokemon] = useState(initPoke);
   const [evoData, setEvoData] = useState();
   const [inputText, setInputText] = useState("");
@@ -78,43 +79,34 @@ const LandingPage = () => {
 
   const onSubmit = (e: any) => {
     e.preventDefault();
-    setPokeId(inputText);
+    setRandomId(inputText);
     setInputText("");
   };
 
   useEffect(() => {
-    fetchData(pokeId);
-  }, [pokeId]);
+    fetchData(randomId);
+  }, [randomId]);
 
   return (
     <article className={`${theme} bg-white`}>
       <section className="space-y-4 pt-4">
         <nav className="flex items-center justify-between bg-white px-4">
-          <div>
-            <Link href="/pokedex">
-              <Image src={logo} alt="" height={40} width={40} />
-            </Link>
-          </div>
+          <Link href="/pokedex">
+            <Image src={logo} alt="" height={40} width={40} />
+          </Link>
 
-          <div className="flex gap-4">
-            <Link href="/pokedex/table">
-              <p className="w-fit rounded-md bg-skin-fill-light px-2 py-1 font-josefin text-lg font-medium transition hover:bg-skin-fill-dark hover:text-skin-base">
-                Pokemon Table
-              </p>
-            </Link>
-            <Link href="/">
-              <p className="w-fit rounded-md bg-black px-2 py-1 font-josefin text-lg font-medium text-white">
-                Home
-              </p>
-            </Link>
-          </div>
+          <Link href="/pokedex/table">
+            <p className="btn bg-skin-fill-light font-josefin text-lg hover:bg-skin-fill-dark hover:text-skin-base">
+              Pokemon Table
+            </p>
+          </Link>
         </nav>
 
         {isPending ? (
           <LoadingBlock />
         ) : (
           <>
-            <section className="bg-gradient-to-b from-white to-rose-100 p-4">
+            <section>
               <div className="mx-auto max-w-sm">
                 <div>
                   <p className="text-center font-josefin text-4xl font-extrabold">
@@ -139,7 +131,7 @@ const LandingPage = () => {
                   </label>
                   <button
                     className="rounded-full p-2 text-skin-type transition-all hover:bg-slate-400 hover:text-white"
-                    onClick={() => setPokeId(randomNumber)}
+                    onClick={() => setRandomId(randomNumber)}
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -194,16 +186,16 @@ const LandingPage = () => {
             </section>
 
             <section className="bg-skin-fill-light">
-              <div className="mx-auto max-w-screen-md px-4">
+              <div className="mx-auto max-w-screen-md p-4">
                 <EvoChain
                   speciesData={evoData}
-                  onEvoClick={(e: any) => setPokeId(e)}
+                  onEvoClick={(e: any) => setRandomId(e)}
                 />
               </div>
             </section>
 
-            <section className="mx-auto grid max-w-screen-md grid-cols-1 px-4 sm:grid-cols-2">
-              <div className="order-2 content-center justify-self-center sm:order-1">
+            <section className="mx-auto flex max-w-screen-md flex-col items-center sm:flex-row">
+              <div className="flex w-full justify-center">
                 <Image
                   src="https://archives.bulbagarden.net/media/upload/thumb/a/a7/PSMD_poster.png/250px-PSMD_poster.png"
                   alt="https://archives.bulbagarden.net/media/upload/thumb/a/a7/PSMD_poster.png/250px-PSMD_poster.png"
@@ -212,7 +204,7 @@ const LandingPage = () => {
                 />
               </div>
 
-              <div className="order-1 mx-auto mb-4 flex max-w-screen-xs flex-col items-center space-y-4 sm:order-2 sm:mx-0 sm:mb-0 sm:max-w-full sm:items-start">
+              <div className="w-full px-4">
                 <p className="indent-8">{titleStr}</p>
                 <p className="indent-8">{titleStr2}</p>
                 <DiscoverButton />
@@ -223,7 +215,7 @@ const LandingPage = () => {
               <div className="mx-auto flex max-w-screen-md items-center justify-between px-4">
                 <NavPokemon
                   pokemon={pokemon}
-                  onNewNav={(e: any) => setPokeId(e)}
+                  onNewNav={(e: any) => setRandomId(e)}
                 />
               </div>
             </section>
