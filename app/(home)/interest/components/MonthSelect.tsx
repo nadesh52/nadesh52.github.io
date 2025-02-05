@@ -19,11 +19,16 @@ const MonthSelect = ({ selectedValue, label }: any) => {
   };
 
   useEffect(() => {
-    window.addEventListener("click", (e: any) => {
+    const handleClick = (e: any) => {
       if (e.target !== listRef.current) {
         setIsHidden(true);
       }
-    });
+    };
+    window.addEventListener("click", handleClick);
+  
+    return () => {
+      window.removeEventListener("click", handleClick);
+    };
   }, []);
 
   return (

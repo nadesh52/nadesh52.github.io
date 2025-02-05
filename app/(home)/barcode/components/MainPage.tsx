@@ -32,8 +32,6 @@ const MainPage = () => {
 
   const mergedArray = mergeArrays(placeholders, barcodes);
 
-  console.log(mergedArray);
-
   const downloadPDF = async () => {
     setIsCapture(true);
     const targetCanvas = a4Ref.current;

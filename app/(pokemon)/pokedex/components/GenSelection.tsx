@@ -15,11 +15,16 @@ const GenSelection = ({ selectedGen }: any) => {
   };
 
   useEffect(() => {
-    window.addEventListener("click", (e: any) => {
+    const handleClick = (e: any) => {
       if (e.target !== listRef.current || e.target === menuRef.current) {
         setIsHidden(true);
       }
-    });
+    };
+    window.addEventListener("click", handleClick);
+  
+    return () => {
+      window.removeEventListener("click", handleClick);
+    };
   }, []);
 
   return (
