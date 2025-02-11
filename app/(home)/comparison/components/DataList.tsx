@@ -23,8 +23,7 @@ const DataList = ({ items, removeId }: any) => {
   }, [items, max, min]);
 
   return (
-    <div>
-      <p className="mb-2 text-lg font-medium">Item list</p>
+    <>
       <ul className="space-y-4 px-2">
         {items.map((item: any, idx: number) => (
           <li key={idx}>
@@ -33,24 +32,24 @@ const DataList = ({ items, removeId }: any) => {
                 (item.average === max && "border-l-success bg-success/30") ||
                 (item.average === min && "border-l-error bg-error/30") ||
                 "bg-white"
-              } rounded-r border-l-4 p-4 shadow transition-all hover:shadow-lg hover:-translate-y-0.5`}
+              } rounded-r border-l-4 p-4 shadow transition-all hover:-translate-y-0.5 hover:shadow-lg`}
             >
               <div className="flex items-center justify-between gap-4">
                 <div className="text-center">
                   <p className="text-lg font-medium">{item.quantity}</p>
-                  <p className="text-xs text-slate-400 select-none">Quantity</p>
+                  <p className="select-none text-xs text-slate-400">Quantity</p>
                 </div>
                 <div className="text-center">
                   <p className="text-lg font-medium">{item.count}</p>
-                  <p className="text-xs text-slate-400 select-none">Count</p>
+                  <p className="select-none text-xs text-slate-400">Count</p>
                 </div>
                 <div className="text-center">
                   <p className="text-lg font-medium">{item.price}</p>
-                  <p className="text-xs text-slate-400 select-none">Price</p>
+                  <p className="select-none text-xs text-slate-400">Price</p>
                 </div>
                 <div className="text-center">
                   <p className="text-lg font-medium">{item.average}</p>
-                  <p className="text-xs text-slate-400 select-none">Average</p>
+                  <p className="select-none text-xs text-slate-400">Average</p>
                 </div>
                 <div>
                   <button onClick={() => handleRemove(item)}>
@@ -75,7 +74,7 @@ const DataList = ({ items, removeId }: any) => {
           </li>
         ))}
       </ul>
-    </div>
+    </>
   );
 };
 
