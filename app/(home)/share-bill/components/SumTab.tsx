@@ -44,6 +44,8 @@ const SumTab = () => {
           <input
             type="number"
             className="input input-bordered input-primary w-full"
+            placeholder="Not available"
+            disabled
           />
         </label>
         <label className="block">
@@ -51,6 +53,8 @@ const SumTab = () => {
           <input
             type="number"
             className="input input-bordered input-primary w-full"
+            placeholder="Not available"
+            disabled
           />
         </label>
       </div>

@@ -40,7 +40,11 @@ const ResultBox = () => {
         className="flex justify-between rounded-sm bg-base-300 p-3"
       >
         <span>Interest Earned</span>
-        <span>{interestDif(result.total, result.amount)}</span>
+        <span>
+          {isNaN(interestDif(result.total, result.amount))
+            ? null
+            : interestDif(result.total, result.amount)}
+        </span>
       </div>
     </section>
   );
