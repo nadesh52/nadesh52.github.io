@@ -93,22 +93,6 @@ const appItems = [
       />
     ),
   },
-  {
-    name: "Label Generator for Barcode",
-    description: "A free label generator for general template sticker paper",
-    demo: "/barcode",
-    sourceCode:
-      "https://github.com/nadesh52/nadesh52.github.io/tree/main/app/(home)/barcode",
-    image: (
-      <Image
-        src="/assets/thumbnails/p5.png"
-        width={430}
-        height={350}
-        alt="tmb"
-        className="h-[350px] sm:w-[430px] w-auto object-cover object-left"
-      />
-    ),
-  },
 ];
 
 const ProjectList = forwardRef<HTMLHeadingElement>(({}, ref) => {
