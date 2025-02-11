@@ -49,13 +49,15 @@ const ComPage = () => {
         </div>
       </article>
 
-      <article className="mx-auto mb-3  max-w-screen-sm pt-[106px]">
+      <article className="mx-auto mb-3 max-w-screen-sm pt-[106px]">
         <div id="container" className="h-[calc(100svh-185px)] py-4">
-          {items.length && <DataList items={items} removeId={handleRemove} />}
+          {items.length ? (
+            <DataList items={items} removeId={handleRemove} />
+          ) : null}
         </div>
       </article>
 
-      <div className="w-full fixed bottom-0 bg-base-content px-4 pb-4 pt-2">
+      <div className="fixed bottom-0 w-full bg-base-content px-4 pb-4 pt-2">
         <InputForm formData={handleForm} />
       </div>
     </>
