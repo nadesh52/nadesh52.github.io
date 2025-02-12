@@ -129,7 +129,7 @@ const Home = () => {
               onClick={() =>
                 projectsRef.current?.scrollIntoView({ behavior: "smooth" })
               }
-              className="cursor-pointer font-medium text-type-fire-normal hover:underline"
+              className="cursor-pointer font-medium underline-offset-2 text-type-fire-normal hover:underline"
             >
               personal projects
             </span>{" "}

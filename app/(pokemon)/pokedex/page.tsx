@@ -110,7 +110,7 @@ const LandingPage = () => {
             <section>
               <div className="mx-auto mt-20 max-w-sm">
                 <div className="mb-10">
-                  <p className="text-center font-josefin text-3xl md:text-4xl font-extrabold">
+                  <p className="text-center font-josefin text-3xl font-extrabold md:text-4xl">
                     Random landing page by Pokemon identity
                   </p>
                   <p className="text-center">try it now!</p>
@@ -132,13 +132,13 @@ const LandingPage = () => {
                     <button
                       type="submit"
                       disabled={inputText.length <= 0 ? true : false}
-                      className="absolute right-2 top-1/2 -translate-y-1/2 rounded-lg bg-skin-fill-light px-3 py-1 text-skin-base hover:bg-skin-fill-dark"
+                      className="absolute right-2 top-1/2 -translate-y-1/2 rounded-lg bg-skin-fill px-3 py-1 text-skin-base hover:bg-skin-fill-dark disabled:bg-skin-fill-light"
                     >
                       find
                     </button>
                   </label>
                   <button
-                    className="group rounded-full p-2 text-skin-type flex items-center gap-2 transition-all hover:bg-slate-400 hover:text-white"
+                    className="group flex items-center gap-2 rounded-full p-2 text-skin-type transition-all hover:bg-skin-fill hover:text-white"
                     onClick={() => setRandomId(randomNumber)}
                   >
                     <svg
@@ -155,7 +155,9 @@ const LandingPage = () => {
                         d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456ZM16.894 20.567 16.5 21.75l-.394-1.183a2.25 2.25 0 0 0-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 0 0 1.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 0 0 1.423 1.423l1.183.394-1.183.394a2.25 2.25 0 0 0-1.423 1.423Z"
                       />
                     </svg>
-                      <span className="invisible group-hover:visible text-lg">Random</span>
+                    <span className="invisible text-lg group-hover:visible">
+                      Random
+                    </span>
                   </button>
                 </form>
               </div>
@@ -206,7 +208,7 @@ const LandingPage = () => {
             <section className="mx-auto flex max-w-screen-md flex-col items-center sm:flex-row">
               <div className="flex w-full justify-center">
                 <Image
-                  src="https://archives.bulbagarden.net/media/upload/thumb/a/a7/PSMD_poster.png/250px-PSMD_poster.png"
+                  src="assets/images/pokemon_poster.png"
                   alt="https://archives.bulbagarden.net/media/upload/thumb/a/a7/PSMD_poster.png/250px-PSMD_poster.png"
                   height={200}
                   width={200}
