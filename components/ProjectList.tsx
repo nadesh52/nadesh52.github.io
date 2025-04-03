@@ -15,8 +15,7 @@ const appItems = [
     ),
 
     demo: "https://nadesh52.github.io/calculator-app",
-    sourceCode:
-      "https://github.com/nadesh52/nadesh52.github.io/tree/main/app/(home)/comparison",
+    sourceCode: "https://github.com/nadesh52/calculator-app",
     image: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
