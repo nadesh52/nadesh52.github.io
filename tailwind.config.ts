@@ -266,9 +266,6 @@ const config: Config = {
       },
     },
   },
-  daisyui: {
-    themes: ["lofi"],
-  },
-  plugins: [require("daisyui"), require("tailwind-scrollbar")],
+  plugins: [require("tailwind-scrollbar")],
 };
 export default config;
