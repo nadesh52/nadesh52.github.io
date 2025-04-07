@@ -7,10 +7,10 @@ const DemoButton = ({ url }: any) => {
     <Link
       href={url}
       target="_blank"
-      className="flex w-fit justify-between rounded-md bg-type-fire-normal px-4 py-2 font-medium text-white hover:bg-type-fire-light"
+      className="bg-yellow flex w-fit justify-between text-2xl items-center gap-2 rounded-lg border-4 border-black px-3 py-2 font-medium text-black drop-shadow-[4px_4px_0px_black]"
     >
-      <p>Live Demo</p>
-      <ArrowTopRightOnSquareIcon className="size-6" />
+      <p>DEMO</p>
+      <ArrowTopRightOnSquareIcon className="size-6 stroke-2" />
     </Link>
   );
 };

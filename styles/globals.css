@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wdth,wght@62.5..100,100..900&display=swap");
 @import url("https://fonts.googleapis.com/css?family=Josefin+Sans");
+@import url('https://fonts.googleapis.com/css2?family=Protest+Strike&family=Tangerine:wght@400;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -8,10 +9,8 @@
 html {
   font-size: 14px;
   line-height: 20px;
-  /* color: #0c2d57; */
-
-  /*-ms-overflow-style: none; /* Internet Explorer 10+ */
-  /*scrollbar-width: none; /* Firefox */ 
+  font-family: 'Protest Strike', sans-serif; /* Default font */
+  overflow-x: hidden;
 }
 
 /* Chrome, Safari, Edge, Opera */
@@ -20,11 +19,37 @@ input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
-
 /* Firefox */
 input[type="number"] {
   -moz-appearance: textfield;
 }
+
+@layer utilities {
+  .preserve-3d {
+    transform-style: preserve-3d
+  }
+  .perspective-1000 {
+    perspective: 1000px
+  }
+  .rotate-y-180 {
+    transform: rotateY(180deg)
+  }
+}
+
+@layer components {
+  .text-stroke-2 {
+    @apply text-white;
+    -webkit-text-stroke: 1px black; /* This stays as raw CSS */
+  }
+  .text-stroke {
+    @apply text-white;
+    -webkit-text-stroke: 4px black;
+  }
+  .floating-btn{
+    @apply size-12 rounded-full bg-white p-2
+  }
+}
+
 
 #container {
   overflow-y: scroll;
