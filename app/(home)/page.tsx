@@ -13,7 +13,7 @@ const Home = () => {
   const contactRef = useRef<any>(null);
 
   return (
-    <section className="w-full">
+    <section>
       <FloatingMenu
         profileRef={profileRef}
         projectsRef={projectsRef}

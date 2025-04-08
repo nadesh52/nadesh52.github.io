@@ -4,7 +4,7 @@ import { techList } from "@/constants";
 
 export default function TechList() {
   return (
-    <section className="mx-auto w-full bg-blue">
+    <section className="w-full bg-blue">
       <div className="px-[15%] py-10">
         <div className="mb-14 w-fit rounded-2xl border-4 border-black bg-white px-4 py-2 drop-shadow-[8px_8px_0px_black]">
           <h4 className="text-[64px] leading-[64px]">Skills&Techs</h4>

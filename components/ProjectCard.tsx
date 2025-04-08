@@ -7,8 +7,8 @@ const ProjectCard = ({ items }: any) => {
   const { name, description, demo, sourceCode, image } = items;
 
   return (
-    <div className="perspective-1000 group aspect-square h-full w-full overflow-hidden">
-      <div className="preserve-3d group-hover:rotate-y-180 relative transition-all delay-75 duration-300 group-hover:delay-0">
+    <div className="group aspect-square h-full w-full overflow-hidden">
+      <div className="preserve-3d group-hover:rotate-y-180 relative transition-all delay-75 duration-200 group-hover:delay-0">
         {/* FRONT CARD */}
         <div className="absolute w-full aspect-square overflow-hidden [backface-visibility:hidden]">
           {image}

@@ -5,9 +5,9 @@ export default function Contact({ contactRef }: any) {
   return (
     <section
       ref={contactRef}
-      className="flex h-[320px] flex-col items-center justify-center gap-10 bg-red"
+      className="flex h-[320px]x flex-col items-center justify-center gap-10 bg-red"
     >
-      <h3 className="text-stroke my-2 text-[64px] font-medium leading-[72px] drop-shadow-[0px_10px_0px_black]">
+      <h3 className="text-stroke text-[64px] font-medium leading-[72px] drop-shadow-[0px_10px_0px_black]">
         Contact
       </h3>
 

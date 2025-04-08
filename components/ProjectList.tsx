@@ -4,8 +4,8 @@ import ProjectCard from "./ProjectCard";
 
 export default function ProjectList({ projectsRef }: any) {
   return (
-    <section ref={projectsRef} className="mx-auto w-full bg-black">
-      <div className="flex h-[128px] items-center justify-center bg-black">
+    <section ref={projectsRef} className="mx-auto w-full bg-gray-950">
+      <div className="flex py-4 items-center justify-center">
         <h3 className="text-center text-[80px] font-medium leading-[88px] tracking-[0.1em] text-white">
           SELECTED LATEST WORKS
         </h3>
