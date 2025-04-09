@@ -5,7 +5,7 @@ export default function Contact({ contactRef }: any) {
   return (
     <section
       ref={contactRef}
-      className="flex h-[320px]x flex-col items-center justify-center gap-10 bg-red"
+      className="h-[320px]x flex flex-col items-center justify-center gap-10 bg-red"
     >
       <h3 className="text-stroke text-[64px] font-medium leading-[72px] drop-shadow-[0px_10px_0px_black]">
         Contact
@@ -20,7 +20,7 @@ export default function Contact({ contactRef }: any) {
             adoolwit.bootpo@gmail.com
           </Link>
         </div>
-        <div>//</div>
+        <div>{`//`}</div>
         <div>
           <Link
             href="https://www.linkedin.com/in/adoolwit-bootpo-551b371a9/"
@@ -30,7 +30,7 @@ export default function Contact({ contactRef }: any) {
             LinkedIn
           </Link>
         </div>
-        <div>//</div>
+        <div>{`//`}</div>
         <div>
           <Link
             href="https://github.com/nadesh52"
