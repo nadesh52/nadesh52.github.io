@@ -11,12 +11,9 @@ export default function TechList() {
         </div>
 
         <div className="w-full rounded-b-md duration-300">
-          <div className="grid grid-cols-[repeat(5,auto)] justify-between gap-y-10">
+          <div className="flex flex-wrap justify-between gap-10 lg:grid lg:grid-cols-[repeat(5,auto)]">
             {techList.map((item: any) => (
-              <div
-                key={item.id}
-                className="flex h-[170px] w-[130px] flex-col items-center justify-between rounded-lg border-4 border-black bg-white p-2 drop-shadow-[8px_8px_0px_black]"
-              >
+              <div key={item.id} className="tech-card">
                 <div>{item.image}</div>
                 <h3 className="text-lg tracking-widest">{item.name}</h3>
               </div>
